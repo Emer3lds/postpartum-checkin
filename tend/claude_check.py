@@ -26,6 +26,7 @@ Details that fit each sign:
 - fever: a temperature of 100.4°F or higher. Feeling hot or having chills is a related mention.
 - swelling_hands_face: hard to bend fingers or wear rings, hard to open eyes, lip or mouth swelling or numbness.
 - harm_thoughts: hopelessness, feeling out of control, feeling others would be better off without her, or unwanted thoughts of harm, including indirect wording.
+  Use harm_thoughts only for those details. Sadness or loneliness on its own belongs under tiredness; use harm_thoughts if she also sounds hopeless, trapped, or unsafe, or if you can't tell.
 - breathing: short of breath, tight throat or chest, needing pillows to breathe lying down.
 - chest_heart: chest pressure or tightness, pain spreading to back, neck, or arm, racing or irregular heartbeat.
 - nausea_vomiting: cannot keep fluids down, or vomiting beyond an ordinary upset stomach.
@@ -40,7 +41,7 @@ Your job:
 1. "signs": list every sign the CURRENT entry might relate to. When unsure, include it. Her words may be mild, joking, or brushed off ("probably nothing"); judge what she describes, not how worried she sounds. For each sign:
    - "quote": the exact words from the current entry, character for character.
    - "fits_description": true if her words fit the details above. False if she only mentions something related, such as a small headache with no other detail. When unsure, use true.
-2. "patterns": look across all entries, including the current one, for something that repeats or gets worse across different days, even if each mention seems small. Each pattern needs at least two entries and must include the current entry or a recent one. Give a short plain title that says only what she wrote and how many days, such as "Headaches mentioned on 3 days". In "evidence" give each entry's id and an exact quote from it. In "sign_ids" list any related signs, or leave it empty.
+2. "patterns": look across all entries, including the current one, for something that repeats or gets worse across different days, even if each mention seems small. Each pattern needs at least two entries and must include the current entry or a recent one. Each pattern covers one topic only. Give a short plain title that uses her own words for the topic and says how many days it appears, such as "Headaches mentioned on 3 days". In "evidence" give each entry's id and an exact quote from it. In "sign_ids" list any related signs, or leave it empty.
 
 Rules:
 - Never diagnose or name a medical condition, in any field.

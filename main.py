@@ -1,6 +1,7 @@
 """Tend: a postpartum check-in demo. Run with: python -m uvicorn main:app --port 8000"""
 
-from datetime import date, datetime
+import json
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -9,13 +10,14 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-load_dotenv(Path(__file__).resolve().parent / ".env")
+load_dotenv(Path(__file__).resolve().parent / ".env", override=True)
 
 from tend import pipeline, store  # noqa: E402
 from tend.signs import FOLLOW_UPS, SIGN_NAMES, SIGNS, highest_level  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent
 COOKIE = "tend_session"
+DEMO_FILE = ROOT / "demo_seed.json"
 
 app = FastAPI(title="Tend")
 
@@ -115,6 +117,30 @@ def login(body: Credentials, response: Response):
         user_id = store.verify_user(conn, body.username.strip(), body.password)
         if user_id is None:
             raise HTTPException(401, "That username and password don't match.")
+        _set_cookie(response, store.create_session(conn, user_id))
+        return _state(conn, user_id)
+
+
+@app.post("/api/demo/login")
+def demo_login(response: Response):
+    """Open the sample account, reset to its prepared made-up check-ins."""
+    if not DEMO_FILE.exists():
+        raise HTTPException(404, "The demo account isn't ready yet.")
+    seed = json.loads(DEMO_FILE.read_text(encoding="utf-8"))
+    now = datetime.now()
+    items = [
+        {
+            **item,
+            "created_at": (now - timedelta(days=item["days_ago"]))
+            .replace(hour=item["hour"], minute=12, second=0, microsecond=0)
+            .isoformat(),
+        }
+        for item in seed["entries"]
+    ]
+    birth_date = (now - timedelta(days=seed["birth_days_ago"])).date().isoformat()
+    with store.db() as conn:
+        user_id = store.get_or_create_demo_user(conn)
+        store.replace_demo_entries(conn, user_id, birth_date, items)
         _set_cookie(response, store.create_session(conn, user_id))
         return _state(conn, user_id)
 

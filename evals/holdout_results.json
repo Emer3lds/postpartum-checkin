@@ -1,0 +1,157 @@
+[
+ {
+  "kind": "warning",
+  "sign": "harm_thoughts",
+  "min_level": "call_911",
+  "text": "My kids deserve a better mom than me, maybe they'd be happier if I disappeared.",
+  "level": "call_911",
+  "signs": [
+   "harm_thoughts",
+   "tiredness"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "harm_thoughts",
+  "min_level": "call_911",
+  "text": "When she won't stop screaming I get scared of what I might do to her.",
+  "level": "call_911",
+  "signs": [
+   "harm_thoughts"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "breathing",
+  "min_level": "call_911",
+  "text": "I had to stop halfway up the stairs because I couldn't get enough air.",
+  "level": "call_911",
+  "signs": [
+   "breathing"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "chest_heart",
+  "min_level": "call_911",
+  "text": "My heart is doing flip-flops and my neck and jaw feel strange.",
+  "level": "call_911",
+  "signs": [
+   "chest_heart"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "bleeding_after",
+  "min_level": "care_now",
+  "text": "I bled through my pad and my pants in the last hour.",
+  "level": "care_now",
+  "signs": [
+   "bleeding_after"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "vision",
+  "min_level": "care_now",
+  "text": "There was a dark patch in the middle of what I could see for a while.",
+  "level": "care_now",
+  "signs": [
+   "vision"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "limb",
+  "min_level": "care_now",
+  "text": "The back of my lower leg feels tight and warm to touch.",
+  "level": "care_now",
+  "signs": [
+   "limb"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "headache",
+  "min_level": "care_now",
+  "text": "My head has been splitting for three days and nothing helps.",
+  "level": "care_now",
+  "signs": [
+   "headache"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "swelling_hands_face",
+  "min_level": "care_now",
+  "text": "My wedding band is stuck and my lips feel tingly and fat.",
+  "level": "care_now",
+  "signs": [
+   "swelling_hands_face"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "I miss my friends but we video chatted today, which was nice.",
+  "level": "check_this",
+  "signs": [
+   "tiredness"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "I felt sad for a bit when the baby's onesie stopped fitting. They grow so fast.",
+  "level": "check_this",
+  "signs": [
+   "tiredness"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Took the baby to the park and sat in the sun for a while.",
+  "level": null,
+  "signs": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Spit up on my last clean shirt, laundry day I guess.",
+  "level": null,
+  "signs": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "My wrists ache a little from holding her head during feeds.",
+  "level": "check_this",
+  "signs": [
+   "limb"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ }
+]

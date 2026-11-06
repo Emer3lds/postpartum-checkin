@@ -1,0 +1,120 @@
+{
+ "birth_days_ago": 21,
+ "entries": [
+  {
+   "id": 1,
+   "days_ago": 6,
+   "hour": 15,
+   "text": "Slept maybe three hours. Little headache this afternoon, probably just no sleep. Baby fed well though.",
+   "flags": [
+    {
+     "sign_id": "headache",
+     "quote": "Little headache this afternoon",
+     "level": "check_this",
+     "source": "both"
+    },
+    {
+     "sign_id": "tiredness",
+     "quote": "Slept maybe three hours.",
+     "level": "check_this",
+     "source": "claude"
+    }
+   ],
+   "patterns": [],
+   "ai_status": "ok"
+  },
+  {
+   "id": 2,
+   "days_ago": 4,
+   "hour": 14,
+   "text": "Little headache again after lunch. My rings feel snug today, I figured it's the heat.",
+   "flags": [
+    {
+     "sign_id": "headache",
+     "quote": "Little headache again after lunch.",
+     "level": "care_now",
+     "source": "both"
+    },
+    {
+     "sign_id": "swelling_hands_face",
+     "quote": "My rings feel snug today",
+     "level": "care_now",
+     "source": "both"
+    }
+   ],
+   "patterns": [
+    {
+     "title": "Little headache mentioned on 2 days",
+     "sign_ids": [
+      "headache"
+     ],
+     "evidence": [
+      {
+       "entry_id": 1,
+       "quote": "Little headache this afternoon"
+      },
+      {
+       "entry_id": 2,
+       "quote": "Little headache again after lunch."
+      }
+     ]
+    }
+   ],
+   "ai_status": "ok"
+  },
+  {
+   "id": 3,
+   "days_ago": 2,
+   "hour": 16,
+   "text": "Feeling kind of off. Another headache, so I drank some water. Mom came over to help with the baby.",
+   "flags": [
+    {
+     "sign_id": "headache",
+     "quote": "Another headache, so I drank some water.",
+     "level": "care_now",
+     "source": "both"
+    }
+   ],
+   "patterns": [
+    {
+     "title": "Headaches mentioned on 3 days",
+     "sign_ids": [
+      "headache"
+     ],
+     "evidence": [
+      {
+       "entry_id": 1,
+       "quote": "Little headache this afternoon"
+      },
+      {
+       "entry_id": 2,
+       "quote": "Little headache again after lunch."
+      },
+      {
+       "entry_id": 3,
+       "quote": "Another headache, so I drank some water."
+      }
+     ]
+    },
+    {
+     "title": "This keeps coming up in your check-ins",
+     "sign_ids": [
+      "swelling_hands_face",
+      "headache"
+     ],
+     "evidence": [
+      {
+       "entry_id": 2,
+       "quote": "My rings feel snug today"
+      },
+      {
+       "entry_id": 3,
+       "quote": "Another headache"
+      }
+     ]
+    }
+   ],
+   "ai_status": "ok"
+  }
+ ]
+}

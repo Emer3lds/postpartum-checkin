@@ -34,7 +34,7 @@ _BLOCKED_TITLE = re.compile(
     r"diagnos|eclampsia|depress|psychosis|anxiety disorder|infection|sepsis|embol|thrombo|"
     r"cardiomyopath|an(a)?emia|stroke|hemorrhage|hypertension|blood pressure|"
     r"you('| a)re (ok|okay|fine)|nothing|normal|common|don'?t worry|no need|\bwait\b|probably|"
-    r"\bmild\b|harmless",
+    r"\bmild\b|harmless|\b1 day\b|\bone day\b",
     re.IGNORECASE,
 )
 

@@ -225,6 +225,22 @@ def test_each_user_sees_only_their_entries(client):
     assert other.status_code == 404
 
 
+def test_demo_login_resets_only_the_demo_account(client):
+    _signup(client, "maya")
+    client.post("/api/checkin", json={"text": "Maya's private headache"})
+    client.post("/api/logout")
+
+    first = client.post("/api/demo/login").json()
+    assert first["username"] == store.DEMO_USERNAME and len(first["entries"]) == 3
+    client.post("/api/checkin", json={"text": "Extra demo entry"})
+    assert len(client.post("/api/demo/login").json()["entries"]) == 3
+    for entry in first["entries"]:
+        assert "private" not in entry["text"]
+    client.post("/api/logout")
+
+    assert client.post("/api/login", json={"username": "maya", "password": "demo-pass-123"}).json()["entries"][0]["text"] == "Maya's private headache"
+
+
 def test_wrong_password_is_rejected_and_password_is_not_stored_plainly(client):
     _signup(client, "maya")
     client.post("/api/logout")

@@ -1,0 +1,16 @@
+[
+ {"kind":"warning","sign":"harm_thoughts","min_level":"call_911","text":"My kids deserve a better mom than me, maybe they'd be happier if I disappeared."},
+ {"kind":"warning","sign":"harm_thoughts","min_level":"call_911","text":"When she won't stop screaming I get scared of what I might do to her."},
+ {"kind":"warning","sign":"breathing","min_level":"call_911","text":"I had to stop halfway up the stairs because I couldn't get enough air."},
+ {"kind":"warning","sign":"chest_heart","min_level":"call_911","text":"My heart is doing flip-flops and my neck and jaw feel strange."},
+ {"kind":"warning","sign":"bleeding_after","min_level":"care_now","text":"I bled through my pad and my pants in the last hour."},
+ {"kind":"warning","sign":"vision","min_level":"care_now","text":"There was a dark patch in the middle of what I could see for a while."},
+ {"kind":"warning","sign":"limb","min_level":"care_now","text":"The back of my lower leg feels tight and warm to touch."},
+ {"kind":"warning","sign":"headache","min_level":"care_now","text":"My head has been splitting for three days and nothing helps."},
+ {"kind":"warning","sign":"swelling_hands_face","min_level":"care_now","text":"My wedding band is stuck and my lips feel tingly and fat."},
+ {"kind":"ordinary","text":"I miss my friends but we video chatted today, which was nice."},
+ {"kind":"ordinary","text":"I felt sad for a bit when the baby's onesie stopped fitting. They grow so fast."},
+ {"kind":"ordinary","text":"Took the baby to the park and sat in the sun for a while."},
+ {"kind":"ordinary","text":"Spit up on my last clean shirt, laundry day I guess."},
+ {"kind":"ordinary","text":"My wrists ache a little from holding her head during feeds."}
+]

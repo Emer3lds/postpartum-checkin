@@ -8,6 +8,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 DB_PATH = Path(__file__).resolve().parent.parent / "data" / "tend.db"
+DEMO_USERNAME = "demo-mother"
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS users (
@@ -150,6 +151,30 @@ def update_flags(conn, user_id: int, entry_id: int, flags: list[dict]) -> None:
         (json.dumps(flags, ensure_ascii=False), entry_id, user_id),
     )
     conn.commit()
+
+
+def get_or_create_demo_user(conn) -> int:
+    """The sample account holds made-up entries only and has an unusable random password."""
+    row = conn.execute("SELECT id FROM users WHERE username = ?", (DEMO_USERNAME,)).fetchone()
+    return row["id"] if row else create_user(conn, DEMO_USERNAME, secrets.token_urlsafe(32))
+
+
+def replace_demo_entries(conn, user_id: int, birth_date: str, items: list[dict]) -> None:
+    """Reset only the sample account, mapping saved ids to the new entry ids."""
+    conn.execute("DELETE FROM entries WHERE user_id = ?", (user_id,))
+    set_birth_date(conn, user_id, birth_date)
+    id_map: dict[int, int] = {}
+    for item in items:
+        id_map[item["id"]] = add_entry(conn, user_id, item["created_at"], item["text"])["id"]
+    for item in items:
+        patterns = [
+            {**p, "evidence": [{**e, "entry_id": id_map[e["entry_id"]]} for e in p["evidence"]]}
+            for p in item["patterns"]
+        ]
+        save_result(
+            conn, user_id, id_map[item["id"]],
+            {"flags": item["flags"], "patterns": patterns, "ai_status": item["ai_status"]},
+        )
 
 
 def list_entries(conn, user_id: int) -> list[dict]:
