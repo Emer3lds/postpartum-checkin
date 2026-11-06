@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tend</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main class="phone">
+  <header class="top">
+    <div class="brand">Tend</div>
+    <button id="help-btn" class="help-btn" type="button">Get help now</button>
+  </header>
+
+  <section id="auth" class="screen" hidden>
+    <h1>A place for how you're really doing</h1>
+    <p class="muted">Check in about your day after giving birth. Tend keeps track and points out warning signs to get checked.</p>
+    <form id="auth-form" class="stack">
+      <label>Username<input id="username" autocomplete="username" required minlength="3"></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" required minlength="8"></label>
+      <p id="auth-error" class="error" role="alert" hidden></p>
+      <button id="auth-submit" class="primary" type="submit">Log in</button>
+      <button id="auth-switch" class="link" type="button">New here? Create an account</button>
+    </form>
+    <p class="fine">Demo only, not a medical device. Please don't enter real health information.</p>
+  </section>
+
+  <section id="setup" class="screen" hidden>
+    <h1>When did you give birth?</h1>
+    <p class="muted">We add this to the words you can share with a nurse or doctor.</p>
+    <form id="setup-form" class="stack">
+      <label>Birth date<input id="birth-date" type="date" required></label>
+      <p id="setup-error" class="error" role="alert" hidden></p>
+      <button class="primary" type="submit">Continue</button>
+    </form>
+  </section>
+
+  <section id="today" class="screen" hidden>
+    <h1 id="greeting">How are you today?</h1>
+    <p class="muted">Say or type anything: how you feel, how you slept, what seems different.</p>
+    <form id="checkin-form" class="stack">
+      <textarea id="entry" rows="6" placeholder="I had a little headache again today..." aria-label="Your check-in"></textarea>
+      <div class="row">
+        <button id="mic" class="secondary" type="button" aria-pressed="false">Speak</button>
+        <button id="save" class="primary grow" type="submit">Save check-in</button>
+      </div>
+      <p id="mic-note" class="fine" hidden></p>
+      <p id="checkin-error" class="error" role="alert" hidden></p>
+    </form>
+    <div id="result"></div>
+    <div id="patterns-today"></div>
+  </section>
+
+  <section id="history" class="screen" hidden>
+    <h1>Your check-ins</h1>
+    <div id="patterns-history"></div>
+    <div id="history-list"></div>
+  </section>
+
+  <section id="summary" class="screen" hidden>
+    <div class="no-print row between">
+      <h1>For your clinician</h1>
+      <button id="print" class="secondary" type="button">Print</button>
+    </div>
+    <div id="summary-body"></div>
+  </section>
+
+  <nav id="tabs" class="tabs no-print" hidden>
+    <button data-tab="today" class="tab" type="button">Today</button>
+    <button data-tab="history" class="tab" type="button">History</button>
+    <button data-tab="summary" class="tab" type="button">Clinician</button>
+    <button id="logout" class="tab" type="button">Log out</button>
+  </nav>
+</main>
+
+<dialog id="alert-dialog" class="sheet" aria-labelledby="alert-title"></dialog>
+
+<dialog id="help-dialog" class="sheet" aria-labelledby="help-title">
+  <h2 id="help-title">Get help now</h2>
+  <p>If you or your baby may be in danger, call 911.</p>
+  <a class="call danger" href="tel:911">Call 911</a>
+  <a class="call" href="tel:988">Call or text 988<small>Suicide &amp; Crisis Lifeline, 24/7</small></a>
+  <a class="call" href="tel:18338526262">Call or text 1-833-852-6262<small>National Maternal Mental Health Hotline, 24/7</small></a>
+  <h3>Urgent warning signs</h3>
+  <p class="muted">If you have any of these, get medical care right away. Tell them you gave birth in the last year.</p>
+  <ul id="help-signs"></ul>
+  <p class="fine">Sources: CDC Hear Her; AWHONN POST-BIRTH (seizures). US numbers only.</p>
+  <button id="help-close" class="secondary wide" type="button">Close</button>
+</dialog>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
