@@ -12,6 +12,7 @@ Built for a women's health hackathon challenge: helping women get the care and i
 - **Call 911 and Get care now:** Fixed alerts when her words clearly describe an urgent warning sign.
 - **Check this:** A calm card with a fixed follow-up question when an entry might relate to a sign. A "yes" starts the full alert.
 - **Everyday entries:** Common new-parent experiences with no warning details are saved without a card, and repeats can still become a pattern.
+- **Support notices:** Fixed cards point her to her baby's doctor for a worry about the baby, and to the National Domestic Violence Hotline for a safety concern at home.
 - **Words to say:** A script built from fixed wording and her exact words.
 - **Pattern catch:** Points out topics that repeat across different days.
 - **Clinician summary:** A printable page with her entries, flagged signs, and patterns.
@@ -29,7 +30,7 @@ Claude Sonnet 5.5 reads each entry, but plain code makes the final safety decisi
 - Pattern titles are the only Claude-written text she sees. Titles that diagnose or reassure are replaced.
 - The app never tells her she's okay. A missed day or a "no" answer doesn't clear a flag.
 
-Sources: [CDC urgent maternal warning signs](https://www.cdc.gov/hearher/maternal-warning-signs/index.html) (the 15 signs and their descriptions) and AWHONN POST-BIRTH warning signs (the call-911 group and seizures, read from [a copy of the handout hosted by a health care organization](https://www.kvhealthcare.org/wp-content/uploads/2023/12/PBWSSaveYourLifeHandout_English.pdf)). Sorting signs into these levels was our own decision.
+Sources: [CDC urgent maternal warning signs](https://www.cdc.gov/hearher/maternal-warning-signs/index.html) (the 15 signs and their descriptions) and AWHONN POST-BIRTH warning signs (the call-911 group, seizures, and incisions, read from [a copy of the handout hosted by a health care organization](https://www.kvhealthcare.org/wp-content/uploads/2023/12/PBWSSaveYourLifeHandout_English.pdf)). Sorting signs into these levels was our own decision. Baby fever wording follows the [American Academy of Pediatrics](https://www.healthychildren.org/English/health-issues/conditions/fever/Pages/Fever-and-Your-Baby.aspx), and hotline details come from the [National Domestic Violence Hotline](https://www.thehotline.org/get-help/).
 
 ## Testing
 

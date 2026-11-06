@@ -13,6 +13,7 @@ from pydantic import BaseModel
 load_dotenv(Path(__file__).resolve().parent / ".env", override=True)
 
 from tend import pipeline, store  # noqa: E402
+from tend.notices import fixed_notice  # noqa: E402
 from tend.signs import FOLLOW_UPS, SIGN_NAMES, SIGNS, highest_level, visible_flags  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent
@@ -76,6 +77,7 @@ def _view(entry: dict, by_id: dict, birth_date: str | None) -> dict:
         "ai_status": entry["ai_status"],
         "flags": flags,
         "patterns": patterns,
+        "notices": [fixed_notice(kind) for kind in entry["notices"]],
         "level": highest_level(entry["flags"]),
         "script": pipeline.build_script(entry["flags"], birth_date),
     }

@@ -8,6 +8,7 @@
   "signs": [
    "harm_thoughts"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -19,6 +20,9 @@
   "level": "call_911",
   "signs": [
    "harm_thoughts"
+  ],
+  "notices": [
+   "baby_health"
   ],
   "ai_status": "ok",
   "passed": true
@@ -32,6 +36,7 @@
   "signs": [
    "harm_thoughts"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -44,6 +49,7 @@
   "signs": [
    "harm_thoughts"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -56,6 +62,7 @@
   "signs": [
    "breathing"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -69,6 +76,7 @@
    "breathing",
    "chest_heart"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -81,6 +89,7 @@
   "signs": [
    "chest_heart"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -93,6 +102,7 @@
   "signs": [
    "chest_heart"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -105,6 +115,7 @@
   "signs": [
    "chest_heart"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -117,6 +128,7 @@
   "signs": [
    "seizure"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -129,6 +141,7 @@
   "signs": [
    "dizziness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -141,6 +154,7 @@
   "signs": [
    "dizziness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -153,6 +167,7 @@
   "signs": [
    "headache"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -165,6 +180,7 @@
   "signs": [
    "headache"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -177,6 +193,7 @@
   "signs": [
    "vision"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -189,6 +206,7 @@
   "signs": [
    "vision"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -201,6 +219,7 @@
   "signs": [
    "fever"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -213,6 +232,7 @@
   "signs": [
    "swelling_hands_face"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -225,6 +245,7 @@
   "signs": [
    "swelling_hands_face"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -237,6 +258,7 @@
   "signs": [
    "nausea_vomiting"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -249,6 +271,7 @@
   "signs": [
    "belly_pain"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -261,6 +284,7 @@
   "signs": [
    "bleeding_after"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -273,6 +297,7 @@
   "signs": [
    "bleeding_after"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -285,6 +310,7 @@
   "signs": [
    "bleeding_after"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -298,6 +324,7 @@
    "swelling_hands_face",
    "limb"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -310,6 +337,7 @@
   "signs": [
    "limb"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -322,6 +350,7 @@
   "signs": [
    "tiredness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -334,6 +363,7 @@
   "signs": [
    "baby_movement"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -346,6 +376,7 @@
   "signs": [
    "bleeding_during"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -354,6 +385,7 @@
   "text": "Baby slept four hours straight and I got a shower today!",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -362,6 +394,7 @@
   "text": "Breastfeeding is going better, the latch feels good.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -370,6 +403,7 @@
   "text": "My mother-in-law visited and brought soup.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -378,6 +412,7 @@
   "text": "Tired like every new parent, but I had a good walk.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -386,14 +421,18 @@
   "text": "Cried a little at a commercial, then laughed about it.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
  {
   "kind": "ordinary",
   "text": "My stitches are itchy today.",
-  "level": null,
-  "signs": [],
+  "level": "check_this",
+  "signs": [
+   "incision"
+  ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -402,6 +441,7 @@
   "text": "Some light spotting, less than last week.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -410,6 +450,7 @@
   "text": "My nipples are sore from feeding.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -418,6 +459,7 @@
   "text": "My back aches from carrying the car seat.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -426,6 +468,7 @@
   "text": "My hair is falling out in the shower.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -434,6 +477,7 @@
   "text": "I'm hungry all the time lately.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -442,16 +486,16 @@
   "text": "The baby has a doctor's appointment on Tuesday.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
  {
   "kind": "ordinary",
   "text": "I forgot where I put my keys again.",
-  "level": "check_this",
-  "signs": [
-   "dizziness"
-  ],
+  "level": null,
+  "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -460,6 +504,7 @@
   "text": "I feel a bit lonely now that my partner went back to work.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -468,6 +513,7 @@
   "text": "I pumped 3 ounces this morning.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -476,6 +522,7 @@
   "text": "Had a cup of coffee and I feel pretty good.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -486,8 +533,11 @@
   "signs": [
    "fever"
   ],
+  "notices": [
+   "baby_health"
+  ],
   "ai_status": "ok",
-  "passed": true
+  "passed": false
  },
  {
   "kind": "ordinary",
@@ -496,6 +546,7 @@
   "signs": [
    "limb"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -504,6 +555,7 @@
   "text": "A little constipated this week.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -514,6 +566,7 @@
   "signs": [
    "fever"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  }

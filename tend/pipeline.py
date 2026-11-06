@@ -12,6 +12,7 @@ import re
 from datetime import date
 
 from .claude_check import check_entry
+from .notices import merge_notices, word_notices
 from .signs import (
     ALWAYS_911,
     ALWAYS_CARE_NOW,
@@ -166,11 +167,12 @@ def repeated_sign_patterns(entries: list[dict], covered: set[str]) -> list[dict]
 def analyze(current: dict, history: list[dict], birth_date: str | None, llm=check_entry) -> dict:
     """Return flags, patterns, and whether Claude's check completed."""
     hits = word_flags(current["text"])
-    claude_signs, claude_patterns, ai_status = [], [], "ok"
+    claude_signs, claude_patterns, claude_notices, ai_status = [], [], [], "ok"
     try:
         result = llm(current, history, birth_date)
         claude_signs = result.get("signs", [])
         claude_patterns = result.get("patterns", [])
+        claude_notices = result.get("notices", [])
     except Exception as exc:  # any failure must still leave her with the safe path
         log.warning("Claude check failed: %s", type(exc).__name__)
         ai_status = "unavailable"
@@ -180,7 +182,8 @@ def analyze(current: dict, history: list[dict], birth_date: str | None, llm=chec
     patterns = clean_claude_patterns(claude_patterns, all_entries)
     covered = {sid for p in patterns for sid in p["sign_ids"]}
     patterns += repeated_sign_patterns(all_entries, covered)
-    return {"flags": flags, "patterns": patterns, "ai_status": ai_status}
+    notices = merge_notices(word_notices(current["text"]), claude_notices)
+    return {"flags": flags, "patterns": patterns, "notices": notices, "ai_status": ai_status}
 
 
 def apply_follow_up(flags: list[dict], sign_id: str, answer: str) -> list[dict]:

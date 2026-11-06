@@ -7,6 +7,7 @@
    "bleeding_after",
    "tiredness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -17,6 +18,7 @@
   "signs": [
    "tiredness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -25,8 +27,10 @@
   "text": "I can't do this anymore lol the baby has been up since 4am, sending coffee.",
   "level": "check_this",
   "signs": [
-   "harm_thoughts"
+   "harm_thoughts",
+   "tiredness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -35,6 +39,7 @@
   "text": "Had a good cry in the car after the pediatrician, then felt better. I think I just needed it.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -43,6 +48,7 @@
   "text": "My heart melted when she smiled today.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -53,6 +59,7 @@
   "signs": [
    "breathing"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -63,6 +70,7 @@
   "signs": [
    "belly_pain"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -74,6 +82,7 @@
    "belly_pain",
    "bleeding_after"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -82,6 +91,7 @@
   "text": "I feel overwhelmed by the laundry and the visitors and just want a nap.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -90,6 +100,7 @@
   "text": "I worry a lot about whether he's eating enough.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -101,6 +112,7 @@
    "swelling_hands_face",
    "limb"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -111,6 +123,7 @@
   "signs": [
    "dizziness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -121,6 +134,7 @@
   "signs": [
    "headache"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -131,6 +145,7 @@
   "signs": [
    "fever"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -139,6 +154,7 @@
   "text": "Feeling kind of down today, I miss my old routine.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  }

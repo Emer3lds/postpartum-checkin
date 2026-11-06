@@ -38,6 +38,7 @@ EVERYDAY_WORDS = {
     "limb": "My left calf is sore and warm.",
     "tiredness": "I'm too tired to pick up the baby.",
     "seizure": "My sister said I had a seizure.",
+    "incision": "My incision is red and oozing.",
 }
 
 
@@ -234,6 +235,35 @@ def test_script_uses_her_exact_words():
     assert "October 16, 2026 (3 weeks ago)" in script
     assert '"I keep seeing little spots."' in script
     assert "may relate" in script
+
+
+def test_incision_levels():
+    assert word_flags("My incision is red and oozing.")["incision"]["level"] == CARE_NOW
+    assert word_flags("My incision is itchy.")["incision"]["level"] == CHECK_THIS
+
+
+@pytest.mark.parametrize(
+    "text,kind",
+    [
+        ("The baby has a fever of 101.", "baby_health"),
+        ("My partner won't let me leave the house.", "home_safety"),
+        ("I'm scared of my husband.", "home_safety"),
+    ],
+)
+def test_word_check_raises_notices_when_claude_fails(text, kind):
+    assert kind in pipeline.analyze(_entry(text), [], None, llm=_failing_llm)["notices"]
+
+
+def test_ordinary_entries_raise_no_notice_and_unknown_claude_notices_are_ignored():
+    llm = lambda *_: {"signs": [], "patterns": [], "notices": ["made_up"]}
+    assert pipeline.analyze(_entry("My partner took the baby for a walk."), [], None, llm=llm)["notices"] == []
+
+
+def test_notice_reaches_the_app_with_fixed_wording(client):
+    _signup(client, "maya")
+    notices = client.post("/api/checkin", json={"text": "The baby has a fever of 101."}).json()["entry"]["notices"]
+    assert notices[0]["type"] == "baby_health"
+    assert "This app can't check your baby's health" in notices[0]["body"]
 
 
 def test_no_flags_means_no_script():

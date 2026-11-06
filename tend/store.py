@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS entries (
     text TEXT NOT NULL,
     flags TEXT NOT NULL DEFAULT '[]',
     patterns TEXT NOT NULL DEFAULT '[]',
-    ai_status TEXT NOT NULL DEFAULT 'pending'
+    ai_status TEXT NOT NULL DEFAULT 'pending',
+    notices TEXT NOT NULL DEFAULT '[]'
 );
 """
 
@@ -39,6 +40,9 @@ def db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.executescript(_SCHEMA)
+    columns = {row["name"] for row in conn.execute("PRAGMA table_info(entries)")}
+    if "notices" not in columns:  # databases made before notices existed
+        conn.execute("ALTER TABLE entries ADD COLUMN notices TEXT NOT NULL DEFAULT '[]'")
     try:
         yield conn
         conn.commit()
@@ -110,6 +114,7 @@ def _to_entry(row: sqlite3.Row) -> dict:
     entry = dict(row)
     entry["flags"] = json.loads(entry["flags"])
     entry["patterns"] = json.loads(entry["patterns"])
+    entry["notices"] = json.loads(entry["notices"])
     return entry
 
 
@@ -126,10 +131,11 @@ def add_entry(conn, user_id: int, created_at: str, text: str) -> dict:
 
 def save_result(conn, user_id: int, entry_id: int, result: dict) -> None:
     conn.execute(
-        "UPDATE entries SET flags = ?, patterns = ?, ai_status = ? WHERE id = ? AND user_id = ?",
+        "UPDATE entries SET flags = ?, patterns = ?, notices = ?, ai_status = ? WHERE id = ? AND user_id = ?",
         (
             json.dumps(result["flags"], ensure_ascii=False),
             json.dumps(result["patterns"], ensure_ascii=False),
+            json.dumps(result.get("notices", [])),
             result["ai_status"],
             entry_id,
             user_id,
@@ -173,7 +179,7 @@ def replace_demo_entries(conn, user_id: int, birth_date: str, items: list[dict])
         ]
         save_result(
             conn, user_id, id_map[item["id"]],
-            {"flags": item["flags"], "patterns": patterns, "ai_status": item["ai_status"]},
+            {"flags": item["flags"], "patterns": patterns, "notices": item.get("notices", []), "ai_status": item["ai_status"]},
         )
 
 

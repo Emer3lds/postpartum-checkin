@@ -1,0 +1,116 @@
+[
+ {
+  "kind": "notice",
+  "notice": "baby_health",
+  "text": "The baby has a fever of 101 and I'm really worried.",
+  "level": null,
+  "signs": [
+   "fever"
+  ],
+  "notices": [
+   "baby_health"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "notice",
+  "notice": "baby_health",
+  "text": "He hasn't had a wet diaper since this morning and he won't feed.",
+  "level": null,
+  "signs": [],
+  "notices": [
+   "baby_health"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "notice",
+  "notice": "home_safety",
+  "text": "My partner keeps yelling at me and won't let me leave the house with the baby.",
+  "level": null,
+  "signs": [],
+  "notices": [
+   "home_safety"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "notice",
+  "notice": "home_safety",
+  "text": "I walk on eggshells at home. He checks my phone and says I'm nothing without him.",
+  "level": null,
+  "signs": [],
+  "notices": [
+   "home_safety"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "incision",
+  "min_level": "care_now",
+  "text": "My c-section incision is red and oozing and it smells weird.",
+  "level": "care_now",
+  "signs": [
+   "incision"
+  ],
+  "notices": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "warning",
+  "sign": "incision",
+  "min_level": "care_now",
+  "text": "The bottom of my stitches came apart and there's some yellow stuff coming out.",
+  "level": "care_now",
+  "signs": [
+   "incision"
+  ],
+  "notices": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "My partner and I bickered about whose turn it was to change the diaper, then laughed.",
+  "level": null,
+  "signs": [],
+  "notices": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Took the baby to her checkup and she's gaining well.",
+  "level": null,
+  "signs": [],
+  "notices": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "My incision is itchy but it looks like it's closing up.",
+  "level": null,
+  "signs": [
+   "incision"
+  ],
+  "notices": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "My partner took the baby for a walk so I could nap.",
+  "level": null,
+  "signs": [],
+  "notices": [],
+  "ai_status": "ok",
+  "passed": true
+ }
+]

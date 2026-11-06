@@ -40,6 +40,7 @@ SIGNS = [
     {"id": "limb", "name": "Severe swelling, redness, or pain of your leg or arm", "source": "CDC"},
     {"id": "tiredness", "name": "Overwhelming tiredness", "source": "CDC"},
     {"id": "seizure", "name": "Seizures", "source": "AWHONN POST-BIRTH"},
+    {"id": "incision", "name": "Incision that is not healing", "source": "AWHONN POST-BIRTH"},
 ]
 
 SIGN_IDS = [s["id"] for s in SIGNS]
@@ -56,6 +57,7 @@ FOLLOW_UPS = {
     "breathing": "Are you having trouble breathing or catching your breath?",
     "chest_heart": "Do you have chest pain or pressure, or is your heart racing or beating unevenly?",
     "seizure": "Did you have a seizure, or did someone see your body shaking while you weren't responding?",
+    "incision": "Is your incision or tear red, swollen, or warm, oozing, opening up, or smelling bad?",
     "headache": "Has it stayed or gotten worse, even after medicine or fluids, or did it start suddenly?",
     "dizziness": "Did you faint, or does the lightheadedness keep going or keep coming back?",
     "vision": "Are you seeing flashes, bright spots, or blind spots, or is your vision blurry or double?",
@@ -97,6 +99,7 @@ _MENTION = {
     "limb": rf"{_LIMB}{_NEAR}{_LIMB_SYMPTOM}|{_LIMB_SYMPTOM}{_NEAR}{_LIMB}",
     "tiredness": r"exhaust\w*|so tired|too tired|really tired|extremely tired|very tired|fatigue\w*|no energy|can't get out of bed|wiped|drained|\bweak\b|weakness|so sad|sadness|can't stop crying|crying all|feel numb",
     "seizure": r"seizures?|convuls\w*",
+    "incision": r"incision|c-?section (scar|wound|cut|site)|stitch\w*|staples?\b|\bscar\b|\btear\b|\bwound\b",
 }
 
 # Words that fit the CDC's description closely enough that the level starts at care_now.
@@ -112,6 +115,11 @@ _DESCRIPTION = {
     "limb": r"swell\w*|swollen|warm|hot|\bred\b|redness",
     "tiredness": r"too tired|can't get out of bed|can't care|rest (doesn't|isn't|won't)|sudden\w*|severe|extreme\w*",
 }
+
+_DESCRIPTION["incision"] = (
+    r"ooz\w*|pus\b|smell\w*|stink\w*|odou?r|\bred\b|redness|swollen|swell\w*|warm|\bhot\b|drain\w*|"
+    r"(came|coming|come|pulled|split\w*|ripp\w*|burst\w*) (\w+ )?(apart|open)|opening up|yellow|green stuff"
+)
 
 _FLAGS = re.IGNORECASE | re.DOTALL
 MENTION = {sid: re.compile(p, _FLAGS) for sid, p in _MENTION.items()}

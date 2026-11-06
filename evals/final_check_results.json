@@ -8,6 +8,7 @@
   "signs": [
    "harm_thoughts"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -20,6 +21,7 @@
   "signs": [
    "breathing"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -33,6 +35,7 @@
    "breathing",
    "chest_heart"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -45,6 +48,7 @@
   "signs": [
    "dizziness"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -57,6 +61,7 @@
   "signs": [
    "bleeding_after"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -69,6 +74,7 @@
   "signs": [
    "headache"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -81,6 +87,7 @@
   "signs": [
    "vision"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -93,6 +100,7 @@
   "signs": [
    "limb"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -101,6 +109,7 @@
   "text": "Baby did tummy time today and I finally ate a hot meal.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -109,6 +118,7 @@
   "text": "I'm so sleepy, took a nap when he napped, and felt a bit more human after.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -117,6 +127,7 @@
   "text": "Teared up at his newborn photos, it's going by so quickly.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -125,6 +136,7 @@
   "text": "Still spotting a little and using light pads, otherwise a calm day.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -133,6 +145,7 @@
   "text": "My boobs were engorged this morning but pumping helped.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -141,6 +154,7 @@
   "text": "I got annoyed at my partner about the dishes and we talked it out.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -149,6 +163,7 @@
   "text": "Kind of anxious about going back to work next month.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -157,6 +172,7 @@
   "text": "My shoulders are stiff from nursing in a bad position.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  }

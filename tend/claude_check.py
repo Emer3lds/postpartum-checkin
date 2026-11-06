@@ -5,6 +5,7 @@ import os
 
 import anthropic
 
+from .notices import NOTICE_TYPES
 from .signs import SIGN_IDS, SIGNS
 
 MODEL = "claude-sonnet-5-5"
@@ -36,6 +37,7 @@ Details that fit each sign:
 - limb: swelling, warmth, redness, or pain in a leg (often the calf) or an arm.
 - tiredness: sudden or severe exhaustion or weakness that rest doesn't help, too tired to care for the baby, or sadness that stays or feels heavy.
 - seizure: a seizure or convulsion.
+- incision: a c-section incision, stitches, or a tear that is red, swollen, warm, oozing, opening up, or smelling bad.
 
 Your job:
 1. "signs": list every sign the CURRENT entry might relate to. Her words may be mild, joking, or brushed off ("probably nothing"); judge what she describes, not how worried she sounds. For each sign:
@@ -44,6 +46,10 @@ Your job:
 
    Do not list a sign for everyday new-parent experiences that include none of the details above, such as tiredness from night feeds, sore or full breasts, bleeding that is getting lighter, or briefly feeling teary, lonely, or sad. The app saves these entries, and they can still appear in a pattern if they repeat or get worse. If she also describes something concerning, list that. Judge each entry by itself; a repeat of a small symptom belongs in "patterns" unless she describes the details above.
 2. "patterns": look across all entries, including the current one, for something that repeats or gets worse across different days, even if each mention seems small. Each pattern needs at least two entries and must include the current entry or a recent one. Each pattern covers one topic only. Give a short plain title that uses her own words for the topic and says how many days it appears, such as "Headaches mentioned on 3 days". In "evidence" give each entry's id and an exact quote from it. In "sign_ids" list any related signs, or leave it empty.
+
+3. "notices": list needs outside her own warning signs, each only when it applies.
+   - "baby_health": she describes a health worry about her baby, such as a fever, trouble breathing, not feeding, few wet diapers, or being hard to wake. Do not treat the baby's symptom as hers. Routine updates about feeding, sleep, or checkups do not count.
+   - "home_safety": someone hurts, threatens, controls, isolates, or frightens her, such as blocking her from leaving, checking her phone, or making her afraid at home. Ordinary disagreements do not count.
 
 Rules:
 - Never diagnose or name a medical condition, in any field.
@@ -56,8 +62,9 @@ Rules:
 OUTPUT_SCHEMA = {
     "type": "object",
     "additionalProperties": False,
-    "required": ["signs", "patterns"],
+    "required": ["signs", "patterns", "notices"],
     "properties": {
+        "notices": {"type": "array", "items": {"type": "string", "enum": NOTICE_TYPES}},
         "signs": {
             "type": "array",
             "items": {
