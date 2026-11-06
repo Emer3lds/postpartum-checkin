@@ -15,6 +15,7 @@ from tend.signs import (  # noqa: E402
     CALL_911,
     CARE_NOW,
     CHECK_THIS,
+    NOTED,
     SIGN_IDS,
     highest_level,
     word_flags,
@@ -105,35 +106,81 @@ def test_missing_key_fails_safe_without_using_inherited_settings(monkeypatch):
 def test_claude_cannot_remove_a_word_match():
     result = pipeline.analyze(_entry(), [], None, llm=_no_findings)
     assert [f["sign_id"] for f in result["flags"]] == ["headache"]
-    assert result["flags"][0]["level"] == CHECK_THIS
+    assert result["flags"][0]["level"] == NOTED
+    assert highest_level(result["flags"]) is None
 
 
 def test_claude_cannot_lower_an_always_urgent_sign():
     text = "I can't catch my breath."
-    llm = lambda *_: {"signs": [{"id": "breathing", "quote": text, "fits_description": False}], "patterns": []}
+    llm = lambda *_: {"signs": [{"id": "breathing", "quote": text, "strength": "possible"}], "patterns": []}
     assert pipeline.analyze(_entry(text), [], None, llm=llm)["flags"][0]["level"] == CALL_911
 
 
+def test_possible_harm_link_asks_a_question_not_911():
+    text = "I felt really teary around lunch."
+    llm = lambda *_: {"signs": [{"id": "harm_thoughts", "quote": text, "strength": "possible"}], "patterns": []}
+    flags = pipeline.analyze(_entry(text), [], None, llm=llm)["flags"]
+    assert flags[0]["level"] == CHECK_THIS
+    assert pipeline.apply_follow_up(flags, "harm_thoughts", "yes")[0]["level"] == CALL_911
+    assert pipeline.apply_follow_up(flags, "harm_thoughts", "no")[0]["level"] == CHECK_THIS
+
+
+def test_ambiguous_venting_starts_with_a_question():
+    assert word_flags("I can't do this anymore.")["harm_thoughts"]["level"] == CHECK_THIS
+    llm = lambda *_: {"signs": [], "patterns": []}
+    flag = pipeline.analyze(_entry("I can't do this anymore."), [], None, llm=llm)["flags"][0]
+    assert flag["level"] == CHECK_THIS  # never hidden, even if Claude does not list it
+
+
+@pytest.mark.parametrize("text", ["It feels like there's no way out of this.", "I feel hopeless."])
+def test_cdc_hopelessness_words_call_911(text):
+    assert word_flags(text)["harm_thoughts"]["level"] == CALL_911
+
+
+def test_waking_on_the_floor_calls_911():
+    assert word_flags("I woke up on the bathroom floor.")["dizziness"]["level"] == CALL_911
+
+
+def test_out_of_breath_and_soaked_shirt_do_not_start_full_alerts():
+    assert word_flags("Got out of breath chasing the toddler.")["breathing"]["level"] == CHECK_THIS
+    assert "bleeding_after" not in word_flags("Night sweats and my shirt was soaked.")
+    assert word_flags("I soaked through a pad.")["bleeding_after"]["level"] == CARE_NOW
+
+
+def test_clear_harm_words_still_call_911_when_claude_says_nothing():
+    flag = pipeline.analyze(_entry("I want to die."), [], None, llm=_no_findings)["flags"][0]
+    assert flag["level"] == CALL_911
+
+
+def test_noted_match_is_hidden_but_three_days_become_a_pattern():
+    def noted(entry_id, day):
+        return {**_entry("So tired.", entry_id, day), "flags": [{"sign_id": "tiredness", "quote": "So tired.", "level": NOTED, "source": "words"}]}
+    two = pipeline.repeated_sign_patterns([noted(1, "2026-11-04"), noted(2, "2026-11-05")], set())
+    three = pipeline.repeated_sign_patterns([noted(1, "2026-11-04"), noted(2, "2026-11-05"), noted(3, "2026-11-06")], set())
+    assert two == [] and three[0]["sign_ids"] == ["tiredness"]
+    assert pipeline.build_script(noted(1, "2026-11-04")["flags"], None) == ""
+
+
 def test_claude_can_raise_a_level():
-    llm = lambda *_: {"signs": [{"id": "headache", "quote": "little headache", "fits_description": True}], "patterns": []}
+    llm = lambda *_: {"signs": [{"id": "headache", "quote": "little headache", "strength": "clear"}], "patterns": []}
     assert pipeline.analyze(_entry(), [], None, llm=llm)["flags"][0]["level"] == CARE_NOW
 
 
 def test_claude_can_add_a_sign_words_missed():
     text = "I don't see the point of anything anymore."
-    llm = lambda *_: {"signs": [{"id": "harm_thoughts", "quote": "I don't see the point", "fits_description": True}], "patterns": []}
+    llm = lambda *_: {"signs": [{"id": "harm_thoughts", "quote": "I don't see the point", "strength": "clear"}], "patterns": []}
     flag = pipeline.analyze(_entry(text), [], None, llm=llm)["flags"][0]
     assert (flag["sign_id"], flag["level"], flag["quote"]) == ("harm_thoughts", CALL_911, "I don't see the point")
 
 
 def test_invented_quote_is_replaced_with_her_words():
     text = "I don't see the point of anything anymore."
-    llm = lambda *_: {"signs": [{"id": "harm_thoughts", "quote": "She plans to hurt herself", "fits_description": True}], "patterns": []}
+    llm = lambda *_: {"signs": [{"id": "harm_thoughts", "quote": "She plans to hurt herself", "strength": "clear"}], "patterns": []}
     assert pipeline.analyze(_entry(text), [], None, llm=llm)["flags"][0]["quote"] == text
 
 
 def test_unknown_sign_id_is_ignored():
-    llm = lambda *_: {"signs": [{"id": "made_up", "quote": "Hello", "fits_description": True}], "patterns": []}
+    llm = lambda *_: {"signs": [{"id": "made_up", "quote": "Hello", "strength": "clear"}], "patterns": []}
     assert pipeline.analyze(_entry("Hello."), [], None, llm=llm)["flags"] == []
 
 
@@ -252,8 +299,9 @@ def test_wrong_password_is_rejected_and_password_is_not_stored_plainly(client):
     assert "demo-pass-123" not in stored
 
 
-def test_follow_up_yes_changes_the_level_through_the_app(client):
+def test_follow_up_yes_changes_the_level_through_the_app(client, monkeypatch):
     _signup(client, "maya")
+    monkeypatch.setattr(pipeline.analyze, "__defaults__", (lambda *_: {"signs": [{"id": "headache", "quote": "Little headache today.", "strength": "possible"}], "patterns": []},))
     entry = client.post("/api/checkin", json={"text": "Little headache today."}).json()["entry"]
     assert entry["level"] == CHECK_THIS
     updated = client.post(f"/api/entries/{entry['id']}/follow-up", json={"sign_id": "headache", "answer": "yes"}).json()["entry"]

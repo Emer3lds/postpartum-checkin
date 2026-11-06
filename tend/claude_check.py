@@ -23,10 +23,10 @@ Details that fit each sign:
 - headache: persists after medicine and fluids, keeps returning, gets worse, or starts suddenly.
 - dizziness: fainting, memory gaps, or lightheadedness that is ongoing or returns over days.
 - vision: flashing lights, bright spots, blind spots, blurry or double vision, short loss of sight.
-- fever: a temperature of 100.4°F or higher. Feeling hot or having chills is a related mention.
+- fever: a temperature of 100.4°F or higher. Feeling hot, chills, or night sweats with no temperature reading are "possible".
 - swelling_hands_face: hard to bend fingers or wear rings, hard to open eyes, lip or mouth swelling or numbness.
 - harm_thoughts: hopelessness, feeling out of control, feeling others would be better off without her, or unwanted thoughts of harm, including indirect wording.
-  Use harm_thoughts only for those details. Sadness or loneliness on its own belongs under tiredness; use harm_thoughts if she also sounds hopeless, trapped, or unsafe, or if you can't tell.
+  Teariness, sadness, or loneliness on its own is not harm_thoughts.
 - breathing: short of breath, tight throat or chest, needing pillows to breathe lying down.
 - chest_heart: chest pressure or tightness, pain spreading to back, neck, or arm, racing or irregular heartbeat.
 - nausea_vomiting: cannot keep fluids down, or vomiting beyond an ordinary upset stomach.
@@ -34,13 +34,15 @@ Details that fit each sign:
 - baby_movement and bleeding_during: only if she says she is pregnant now.
 - bleeding_after: soaking one or more pads in an hour, clots bigger than an egg, tissue, or bad-smelling discharge.
 - limb: swelling, warmth, redness, or pain in a leg (often the calf) or an arm.
-- tiredness: sudden or severe exhaustion or weakness that rest doesn't help, too tired to care for the baby, or sadness after birth.
+- tiredness: sudden or severe exhaustion or weakness that rest doesn't help, too tired to care for the baby, or sadness that stays or feels heavy.
 - seizure: a seizure or convulsion.
 
 Your job:
-1. "signs": list every sign the CURRENT entry might relate to. When unsure, include it. Her words may be mild, joking, or brushed off ("probably nothing"); judge what she describes, not how worried she sounds. For each sign:
+1. "signs": list every sign the CURRENT entry might relate to. Her words may be mild, joking, or brushed off ("probably nothing"); judge what she describes, not how worried she sounds. For each sign:
    - "quote": the exact words from the current entry, character for character.
-   - "fits_description": true if her words fit the details above. False if she only mentions something related, such as a small headache with no other detail. When unsure, use true.
+   - "strength": "clear" if her words directly describe the details above, even in casual or indirect language, such as "everyone would be better off if I wasn't around" or "I woke up on the floor". "possible" if it might relate but she does not describe those details, such as a small headache with no other detail. When unsure between them, use "possible": the app will ask her a question, and a yes starts the full alert.
+
+   Do not list a sign for everyday new-parent experiences that include none of the details above, such as tiredness from night feeds, sore or full breasts, bleeding that is getting lighter, or briefly feeling teary, lonely, or sad. The app saves these entries, and they can still appear in a pattern if they repeat or get worse. If she also describes something concerning, list that. Judge each entry by itself; a repeat of a small symptom belongs in "patterns" unless she describes the details above.
 2. "patterns": look across all entries, including the current one, for something that repeats or gets worse across different days, even if each mention seems small. Each pattern needs at least two entries and must include the current entry or a recent one. Each pattern covers one topic only. Give a short plain title that uses her own words for the topic and says how many days it appears, such as "Headaches mentioned on 3 days". In "evidence" give each entry's id and an exact quote from it. In "sign_ids" list any related signs, or leave it empty.
 
 Rules:
@@ -61,11 +63,11 @@ OUTPUT_SCHEMA = {
             "items": {
                 "type": "object",
                 "additionalProperties": False,
-                "required": ["id", "quote", "fits_description"],
+                "required": ["id", "quote", "strength"],
                 "properties": {
                     "id": {"type": "string", "enum": SIGN_IDS},
                     "quote": {"type": "string"},
-                    "fits_description": {"type": "boolean"},
+                    "strength": {"type": "string", "enum": ["clear", "possible"]},
                 },
             },
         },

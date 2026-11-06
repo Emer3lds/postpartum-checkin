@@ -111,20 +111,16 @@
  {
   "kind": "ordinary",
   "text": "I miss my friends but we video chatted today, which was nice.",
-  "level": "check_this",
-  "signs": [
-   "tiredness"
-  ],
+  "level": null,
+  "signs": [],
   "ai_status": "ok",
   "passed": true
  },
  {
   "kind": "ordinary",
   "text": "I felt sad for a bit when the baby's onesie stopped fitting. They grow so fast.",
-  "level": "check_this",
-  "signs": [
-   "tiredness"
-  ],
+  "level": null,
+  "signs": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -147,10 +143,8 @@
  {
   "kind": "ordinary",
   "text": "My wrists ache a little from holding her head during feeds.",
-  "level": "check_this",
-  "signs": [
-   "limb"
-  ],
+  "level": null,
+  "signs": [],
   "ai_status": "ok",
   "passed": true
  }

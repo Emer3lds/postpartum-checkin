@@ -12,12 +12,6 @@
      "quote": "Little headache this afternoon",
      "level": "check_this",
      "source": "both"
-    },
-    {
-     "sign_id": "tiredness",
-     "quote": "Slept maybe three hours.",
-     "level": "check_this",
-     "source": "claude"
     }
    ],
    "patterns": [],
@@ -32,13 +26,13 @@
     {
      "sign_id": "headache",
      "quote": "Little headache again after lunch.",
-     "level": "care_now",
+     "level": "check_this",
      "source": "both"
     },
     {
      "sign_id": "swelling_hands_face",
      "quote": "My rings feel snug today",
-     "level": "care_now",
+     "level": "check_this",
      "source": "both"
     }
    ],
@@ -71,7 +65,7 @@
     {
      "sign_id": "headache",
      "quote": "Another headache, so I drank some water.",
-     "level": "care_now",
+     "level": "check_this",
      "source": "both"
     }
    ],

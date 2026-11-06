@@ -1,0 +1,145 @@
+[
+ {
+  "kind": "ordinary",
+  "text": "okay I was so tired today and baby was cluster feeding all night bleeding seems to be lighter but my boobs are rock hard and sore and mostly I felt really teary around lunch for no reason but my mom came over to hold him",
+  "level": null,
+  "signs": [
+   "bleeding_after",
+   "tiredness"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "I'm exhausted, up every two hours, but we got outside for ten minutes and that helped.",
+  "level": null,
+  "signs": [
+   "tiredness"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "I can't do this anymore lol the baby has been up since 4am, sending coffee.",
+  "level": "check_this",
+  "signs": [
+   "harm_thoughts"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Had a good cry in the car after the pediatrician, then felt better. I think I just needed it.",
+  "level": null,
+  "signs": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "My heart melted when she smiled today.",
+  "level": null,
+  "signs": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Got out of breath chasing the toddler around the yard, I'm so out of shape, we laughed about it.",
+  "level": "check_this",
+  "signs": [
+   "breathing"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Stairs are hard with the c-section still healing but it hurts less than last week.",
+  "level": null,
+  "signs": [
+   "belly_pain"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Cramping a little while nursing, same as yesterday, bleeding is mostly brown now.",
+  "level": null,
+  "signs": [
+   "belly_pain",
+   "bleeding_after"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "I feel overwhelmed by the laundry and the visitors and just want a nap.",
+  "level": null,
+  "signs": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "I worry a lot about whether he's eating enough.",
+  "level": null,
+  "signs": [],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Feet are still a little puffy at the end of the day but better than the first week.",
+  "level": "check_this",
+  "signs": [
+   "swelling_hands_face",
+   "limb"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Felt a bit lightheaded when I got up too fast, ate lunch, and it went away.",
+  "level": "check_this",
+  "signs": [
+   "dizziness"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Had a small headache after not drinking enough water. It went away after a glass and a nap.",
+  "level": "check_this",
+  "signs": [
+   "headache"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Night sweats again and my shirt was soaked, and also I leaked through my nursing pads.",
+  "level": "check_this",
+  "signs": [
+   "fever"
+  ],
+  "ai_status": "ok",
+  "passed": true
+ },
+ {
+  "kind": "ordinary",
+  "text": "Feeling kind of down today, I miss my old routine.",
+  "level": null,
+  "signs": [],
+  "ai_status": "ok",
+  "passed": true
+ }
+]

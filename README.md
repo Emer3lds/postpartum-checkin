@@ -9,8 +9,9 @@ Built for a women's health hackathon challenge: helping women get the care and i
 ## What it does
 
 - **Check-ins:** Speak (in Chrome) or type an entry.
-- **Call 911 and Get care now:** Fixed alerts when her words may relate to an urgent warning sign.
-- **Check this:** A calm card with a fixed follow-up question when she mentions something related but not the published description. A "yes" moves it to Get care now.
+- **Call 911 and Get care now:** Fixed alerts when her words clearly describe an urgent warning sign.
+- **Check this:** A calm card with a fixed follow-up question when an entry might relate to a sign. A "yes" starts the full alert.
+- **Everyday entries:** Common new-parent experiences with no warning details are saved without a card, and repeats can still become a pattern.
 - **Words to say:** A script built from fixed wording and her exact words.
 - **Pattern catch:** Points out topics that repeat across different days.
 - **Clinician summary:** A printable page with her entries, flagged signs, and patterns.
@@ -20,7 +21,8 @@ Built for a women's health hackathon challenge: helping women get the care and i
 
 Claude Sonnet 5.5 reads each entry, but plain code makes the final safety decisions:
 
-- Word matching always runs. Claude can add a sign or raise a level, but can't remove a sign or lower a level.
+- Word matching always runs. Clear word matches can't be lowered by Claude. Claude can quiet only a weak match, which stays on record for pattern checks.
+- A tentative link from Claude becomes a question, not a full alert.
 - If Claude's check fails, word matches are raised to a full alert and she's told the full check didn't finish.
 - Claude doesn't write the alert, follow-up, or script wording.
 - Quotes are checked against what she wrote. If one doesn't match, the app shows her own text.

@@ -13,7 +13,7 @@ from pydantic import BaseModel
 load_dotenv(Path(__file__).resolve().parent / ".env", override=True)
 
 from tend import pipeline, store  # noqa: E402
-from tend.signs import FOLLOW_UPS, SIGN_NAMES, SIGNS, highest_level  # noqa: E402
+from tend.signs import FOLLOW_UPS, SIGN_NAMES, SIGNS, highest_level, visible_flags  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent
 COOKIE = "tend_session"
@@ -56,7 +56,7 @@ def _view(entry: dict, by_id: dict, birth_date: str | None) -> dict:
     """Add the sign names, dates, questions, and fixed script the page needs."""
     flags = [
         {**f, "name": SIGN_NAMES[f["sign_id"]], "question": FOLLOW_UPS.get(f["sign_id"])}
-        for f in entry["flags"]
+        for f in visible_flags(entry["flags"])
     ]
     patterns = [
         {

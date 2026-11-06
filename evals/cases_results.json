@@ -30,8 +30,7 @@
   "text": "I don't see the point in waking up anymore.",
   "level": "call_911",
   "signs": [
-   "harm_thoughts",
-   "tiredness"
+   "harm_thoughts"
   ],
   "ai_status": "ok",
   "passed": true
@@ -43,8 +42,7 @@
   "text": "It feels like there's no way out of this.",
   "level": "call_911",
   "signs": [
-   "harm_thoughts",
-   "tiredness"
+   "harm_thoughts"
   ],
   "ai_status": "ok",
   "passed": true
@@ -56,9 +54,7 @@
   "text": "Walking to the bathroom leaves me winded and I have to sleep sitting up.",
   "level": "call_911",
   "signs": [
-   "breathing",
-   "chest_heart",
-   "tiredness"
+   "breathing"
   ],
   "ai_status": "ok",
   "passed": true
@@ -83,8 +79,7 @@
   "text": "There's a heavy pressure behind my breastbone that goes into my left arm.",
   "level": "call_911",
   "signs": [
-   "chest_heart",
-   "limb"
+   "chest_heart"
   ],
   "ai_status": "ok",
   "passed": true
@@ -108,7 +103,6 @@
   "text": "Not a big deal, just this squeeze in my chest when I go up the stairs.",
   "level": "call_911",
   "signs": [
-   "breathing",
    "chest_heart"
   ],
   "ai_status": "ok",
@@ -121,7 +115,6 @@
   "text": "My husband says my whole body was shaking and I wasn't responding for a minute.",
   "level": "call_911",
   "signs": [
-   "dizziness",
    "seizure"
   ],
   "ai_status": "ok",
@@ -134,8 +127,7 @@
   "text": "I woke up on the bathroom floor and I'm not sure how I got there.",
   "level": "call_911",
   "signs": [
-   "dizziness",
-   "seizure"
+   "dizziness"
   ],
   "ai_status": "ok",
   "passed": true
@@ -183,7 +175,6 @@
   "text": "Everything went kind of sparkly at the edges for a few minutes.",
   "level": "care_now",
   "signs": [
-   "dizziness",
    "vision"
   ],
   "ai_status": "ok",
@@ -353,8 +344,7 @@
   "text": "I'm pregnant again and there's fluid trickling down my leg.",
   "level": "care_now",
   "signs": [
-   "bleeding_during",
-   "bleeding_after"
+   "bleeding_during"
   ],
   "ai_status": "ok",
   "passed": true
@@ -386,20 +376,16 @@
  {
   "kind": "ordinary",
   "text": "Tired like every new parent, but I had a good walk.",
-  "level": "check_this",
-  "signs": [
-   "tiredness"
-  ],
+  "level": null,
+  "signs": [],
   "ai_status": "ok",
   "passed": true
  },
  {
   "kind": "ordinary",
   "text": "Cried a little at a commercial, then laughed about it.",
-  "level": "check_this",
-  "signs": [
-   "tiredness"
-  ],
+  "level": null,
+  "signs": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -414,10 +400,8 @@
  {
   "kind": "ordinary",
   "text": "Some light spotting, less than last week.",
-  "level": "check_this",
-  "signs": [
-   "bleeding_after"
-  ],
+  "level": null,
+  "signs": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -474,13 +458,10 @@
  {
   "kind": "ordinary",
   "text": "I feel a bit lonely now that my partner went back to work.",
-  "level": "call_911",
-  "signs": [
-   "harm_thoughts",
-   "tiredness"
-  ],
+  "level": null,
+  "signs": [],
   "ai_status": "ok",
-  "passed": false
+  "passed": true
  },
  {
   "kind": "ordinary",
@@ -501,7 +482,7 @@
  {
   "kind": "ordinary",
   "text": "The baby had a fever last night and her doctor checked her.",
-  "level": "check_this",
+  "level": null,
   "signs": [
    "fever"
   ],
@@ -511,7 +492,7 @@
  {
   "kind": "ordinary",
   "text": "My arms are sore from rocking her all night.",
-  "level": "check_this",
+  "level": null,
   "signs": [
    "limb"
   ],

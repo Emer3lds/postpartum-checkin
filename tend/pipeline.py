@@ -13,14 +13,20 @@ from datetime import date
 
 from .claude_check import check_entry
 from .signs import (
+    ALWAYS_911,
+    ALWAYS_CARE_NOW,
+    CALL_911,
     CARE_NOW,
+    CHECK_THIS,
     FOLLOW_UPS,
     LEVEL_ORDER,
+    NOTED,
+    PASSED_OUT,
     SIGN_IDS,
     SIGN_NAMES,
     SIGNS,
     highest_level,
-    minimum_level,
+    visible_flags,
     word_flags,
 )
 
@@ -59,6 +65,17 @@ def _raise_to(level: str, floor: str) -> str:
     return level if LEVEL_ORDER[level] >= LEVEL_ORDER[floor] else floor
 
 
+def _claude_level(sign_id: str, strength: str | None, quote: str) -> str:
+    """A possible link becomes a question. Only a clear description becomes a full alert."""
+    if sign_id in ALWAYS_CARE_NOW:
+        return CARE_NOW
+    if strength == "possible":
+        return CHECK_THIS
+    if sign_id in ALWAYS_911 or (sign_id == "dizziness" and PASSED_OUT.search(quote)):
+        return CALL_911
+    return CARE_NOW
+
+
 def merge_flags(text: str, hits: dict[str, dict], claude_signs: list[dict], ai_ok: bool) -> list[dict]:
     """Combine both checks. Anything either one found stays flagged."""
     merged: dict[str, dict] = {}
@@ -66,14 +83,20 @@ def merge_flags(text: str, hits: dict[str, dict], claude_signs: list[dict], ai_o
         level = hit["level"] if ai_ok else _raise_to(hit["level"], CARE_NOW)
         merged[sid] = {"sign_id": sid, "quote": hit["quote"] or text, "level": level, "source": "words"}
 
+    listed_by_claude = {sign.get("id") for sign in claude_signs}
+    if ai_ok:
+        for sid, flag in merged.items():
+            # A weak word match that Claude reviewed and did not link to a sign shows no card.
+            if flag["level"] == CHECK_THIS and sid not in listed_by_claude and sid not in ALWAYS_911:
+                flag["level"] = NOTED
+
     for sign in claude_signs:
         sid = sign.get("id")
         if sid not in SIGN_NAMES:
             continue
         quote = sign.get("quote", "")
         verified = quote.strip() if quote_is_hers(quote, text) else None
-        floor = minimum_level(sid, verified or "")
-        level = _raise_to(CARE_NOW, floor) if sign.get("fits_description", True) else floor
+        level = _claude_level(sid, sign.get("strength"), verified or "")
         if sid in merged:
             merged[sid]["source"] = "both"
             merged[sid]["level"] = _raise_to(merged[sid]["level"], level)
@@ -121,13 +144,15 @@ def repeated_sign_patterns(entries: list[dict], covered: set[str]) -> list[dict]
     for sid in SIGN_IDS:
         if sid in covered:
             continue
-        evidence, days = [], set()
+        evidence, days, all_noted = [], set(), True
         for entry in entries:
             for flag in entry.get("flags", []):
                 if flag["sign_id"] == sid:
                     evidence.append({"entry_id": entry["id"], "quote": flag["quote"]})
                     days.add(entry["created_at"][:10])
-        if len(days) >= 2:
+                    all_noted = all_noted and flag["level"] == NOTED
+        # Weak matches need more days, so common new-parent words don't always raise a pattern.
+        if len(days) >= (3 if all_noted else 2):
             patterns.append(
                 {
                     "title": f"Entries on {len(days)} days may relate to: {SIGN_NAMES[sid]}",
@@ -165,7 +190,8 @@ def apply_follow_up(flags: list[dict], sign_id: str, answer: str) -> list[dict]:
         if flag["sign_id"] == sign_id:
             flag = {**flag, "answer": answer}
             if answer == "yes":
-                flag["level"] = _raise_to(flag["level"], CARE_NOW)
+                target = CALL_911 if sign_id in ALWAYS_911 else CARE_NOW
+                flag["level"] = _raise_to(flag["level"], target)
         updated.append(flag)
     return updated
 
@@ -177,6 +203,7 @@ def weeks_since(birth_date: str, today: date | None = None) -> int:
 
 def build_script(flags: list[dict], birth_date: str | None, today: date | None = None) -> str:
     """Fixed wording plus her exact words. No model writes any part of this."""
+    flags = visible_flags(flags)
     if not flags:
         return ""
     if birth_date:
