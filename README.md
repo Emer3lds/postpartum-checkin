@@ -24,7 +24,7 @@ Claude Sonnet 5.5 reads each entry, but plain code makes the final safety decisi
 
 - Word matching always runs. Clear word matches can't be lowered by Claude. Claude can quiet only a weak match, which stays on record for pattern checks.
 - A tentative link from Claude becomes a question, not a full alert.
-- If Claude's check fails, word matches are raised to a full alert and she's told the full check didn't finish.
+- If Claude's check fails, word matches are raised to a full alert and she's told the full check didn't finish. A baby's symptom shows the baby notice instead, unless it matches a call-911 sign.
 - Claude doesn't write the alert, follow-up, or script wording.
 - Quotes are checked against what she wrote. If one doesn't match, the app shows her own text.
 - Pattern titles are the only Claude-written text she sees. Titles that diagnose or reassure are replaced.
@@ -57,6 +57,8 @@ Add your Anthropic API key to `.env`, then start the app and open http://localho
 
 Select **Try the demo account** to see made-up check-ins. Opening it again resets that account.
 
+On Mac or Linux, use `python3 -m venv .venv`, `.venv/bin/python` in place of `.venv\Scripts\python`, and `cp` in place of `copy`.
+
 To run the tests:
 
 ```bash
@@ -69,4 +71,4 @@ To run the tests:
 - Entry text is sent to Anthropic for the Claude check. Chrome's voice input may send audio to Google.
 - A real version would need hosted encrypted connections, password reset, stronger data protection, a health privacy review, and clinical review.
 - Emergency numbers and guidance are for the US.
-- Daily reminders aren't built yet.
+- Daily reminders and quick exit aren't built yet.
