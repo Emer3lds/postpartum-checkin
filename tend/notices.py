@@ -69,6 +69,11 @@ def word_notices(text: str) -> set[str]:
     return {kind for kind, pattern in _WORDS.items() if pattern.search(searchable)}
 
 
+def about_baby(sentence: str) -> bool:
+    """True when this sentence describes a health worry about the baby."""
+    return bool(_WORDS[BABY_HEALTH].search(sentence.replace("’", "'").replace("‘", "'")))
+
+
 def merge_notices(words: set[str], claude: list[str]) -> list[str]:
     """Either check can raise a notice. Unknown values from Claude are ignored."""
     found = words | {n for n in claude if n in NOTICES}

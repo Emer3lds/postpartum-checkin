@@ -6,9 +6,9 @@
   "text": "My kids deserve a better mom than me, maybe they'd be happier if I disappeared.",
   "level": "call_911",
   "signs": [
-   "harm_thoughts",
-   "tiredness"
+   "harm_thoughts"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -21,6 +21,7 @@
   "signs": [
    "harm_thoughts"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -33,6 +34,7 @@
   "signs": [
    "breathing"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -45,6 +47,7 @@
   "signs": [
    "chest_heart"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -57,6 +60,7 @@
   "signs": [
    "bleeding_after"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -69,6 +73,7 @@
   "signs": [
    "vision"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -81,6 +86,7 @@
   "signs": [
    "limb"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -93,6 +99,7 @@
   "signs": [
    "headache"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -105,6 +112,7 @@
   "signs": [
    "swelling_hands_face"
   ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -113,6 +121,7 @@
   "text": "I miss my friends but we video chatted today, which was nice.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -121,6 +130,7 @@
   "text": "I felt sad for a bit when the baby's onesie stopped fitting. They grow so fast.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -129,6 +139,7 @@
   "text": "Took the baby to the park and sat in the sun for a while.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -137,6 +148,7 @@
   "text": "Spit up on my last clean shirt, laundry day I guess.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -145,6 +157,7 @@
   "text": "My wrists ache a little from holding her head during feeds.",
   "level": null,
   "signs": [],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  }

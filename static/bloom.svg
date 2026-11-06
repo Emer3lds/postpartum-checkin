@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 1400" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+  <!-- An original, out-of-focus flower for the check-in background.
+       Each petal is shaded across its width, so overlapping petals keep soft edges
+       and it still reads as a flower once blurred. -->
+  <defs>
+    <filter id="far" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="20"/></filter>
+    <filter id="mid" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="near" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="wide" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="40"/></filter>
+
+    <radialGradient id="fill" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="360">
+      <stop offset="0" stop-color="#ee9db0"/>
+      <stop offset="0.4" stop-color="#f3b4cb"/>
+      <stop offset="0.8" stop-color="#f8d3e2"/>
+      <stop offset="1" stop-color="#fce9ef"/>
+    </radialGradient>
+    <linearGradient id="fold" gradientUnits="userSpaceOnUse" x1="-135" y1="0" x2="135" y2="0">
+      <stop offset="0" stop-color="#d98fc0" stop-opacity="0.72"/>
+      <stop offset="0.55" stop-color="#e9a9cb" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff6f8" stop-opacity="0.75"/>
+    </linearGradient>
+    <radialGradient id="fillBack" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="450">
+      <stop offset="0" stop-color="#e3a2cf"/>
+      <stop offset="0.6" stop-color="#d4b6ea"/>
+      <stop offset="1" stop-color="#e8daf6"/>
+    </radialGradient>
+    <linearGradient id="foldBack" gradientUnits="userSpaceOnUse" x1="-170" y1="0" x2="170" y2="0">
+      <stop offset="0" stop-color="#b995de" stop-opacity="0.6"/>
+      <stop offset="0.55" stop-color="#c8a6e4" stop-opacity="0"/>
+      <stop offset="1" stop-color="#f7effc" stop-opacity="0.7"/>
+    </linearGradient>
+    <radialGradient id="heart" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe6ae"/>
+      <stop offset="0.5" stop-color="#fbbf8c"/>
+      <stop offset="1" stop-color="#f3a58f" stop-opacity="0"/>
+    </radialGradient>
+
+    <path id="b" d="M0 0 C -160 -90 -180 -330 0 -445 C 180 -330 160 -90 0 0 Z"/>
+    <path id="f" d="M0 0 C -125 -70 -140 -255 0 -350 C 140 -255 125 -70 0 0 Z"/>
+    <g id="backPetal"><use href="#b" fill="url(#fillBack)"/><use href="#b" fill="url(#foldBack)"/></g>
+    <g id="frontPetal"><use href="#f" fill="url(#fill)"/><use href="#f" fill="url(#fold)"/></g>
+  </defs>
+
+  <g transform="translate(560 340)" filter="url(#far)">
+    <use href="#backPetal" transform="rotate(20)"/>
+    <use href="#backPetal" transform="rotate(92)"/>
+    <use href="#backPetal" transform="rotate(164)"/>
+    <use href="#backPetal" transform="rotate(236)"/>
+    <use href="#backPetal" transform="rotate(308)"/>
+  </g>
+
+  <g transform="translate(560 340)" filter="url(#mid)">
+    <use href="#frontPetal" transform="rotate(-16)"/>
+    <use href="#frontPetal" transform="rotate(56)"/>
+    <use href="#frontPetal" transform="rotate(128)"/>
+    <use href="#frontPetal" transform="rotate(200)"/>
+    <use href="#frontPetal" transform="rotate(272)"/>
+  </g>
+
+  <circle cx="560" cy="340" r="84" fill="url(#heart)" filter="url(#near)"/>
+
+  <!-- A faint second bloom low on the screen, for depth. -->
+  <g transform="translate(90 1160) scale(0.8)" filter="url(#wide)" opacity="0.6">
+    <use href="#backPetal" transform="rotate(10)"/>
+    <use href="#backPetal" transform="rotate(82)"/>
+    <use href="#backPetal" transform="rotate(154)"/>
+    <use href="#backPetal" transform="rotate(226)"/>
+    <use href="#backPetal" transform="rotate(298)"/>
+  </g>
+</svg>

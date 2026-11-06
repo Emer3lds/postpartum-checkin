@@ -96,7 +96,7 @@
  {
   "kind": "ordinary",
   "text": "My incision is itchy but it looks like it's closing up.",
-  "level": null,
+  "level": "check_this",
   "signs": [
    "incision"
   ],

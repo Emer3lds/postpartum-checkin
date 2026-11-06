@@ -22,8 +22,14 @@
       <p id="auth-error" class="error" role="alert" hidden></p>
       <button id="auth-submit" class="primary" type="submit">Log in</button>
       <button id="auth-switch" class="link" type="button">New here? Create an account</button>
+      <button id="demo-login" class="secondary" type="button">Try the demo account</button>
     </form>
     <p class="fine">Demo only, not a medical device. Please don't enter real health information.</p>
+  </section>
+
+  <section id="welcome" class="screen" role="status" hidden>
+    <h1>Welcome to Tend</h1>
+    <p class="muted">We're so glad you're here.</p>
   </section>
 
   <section id="setup" class="screen" hidden>
@@ -77,16 +83,23 @@
 <dialog id="alert-dialog" class="sheet" aria-labelledby="alert-title"></dialog>
 
 <dialog id="help-dialog" class="sheet" aria-labelledby="help-title">
-  <h2 id="help-title">Get help now</h2>
-  <p>If you or your baby may be in danger, call 911.</p>
-  <a class="call danger" href="tel:911">Call 911</a>
-  <a class="call" href="tel:988">Call or text 988<small>Suicide &amp; Crisis Lifeline, 24/7</small></a>
-  <a class="call" href="tel:18338526262">Call or text 1-833-852-6262<small>National Maternal Mental Health Hotline, 24/7</small></a>
-  <h3>Urgent warning signs</h3>
-  <p class="muted">If you have any of these, get medical care right away. Tell them you gave birth in the last year.</p>
-  <ul id="help-signs"></ul>
-  <p class="fine">Sources: CDC Hear Her; AWHONN POST-BIRTH (seizures). US numbers only.</p>
-  <button id="help-close" class="secondary wide" type="button">Close</button>
+  <header class="alert-hero">
+    <h2 id="help-title">Get help now</h2>
+    <p>If you or your baby may be in danger, call 911.</p>
+  </header>
+  <div class="alert-call">
+    <a class="call danger" href="tel:911">Call 911</a>
+    <button id="help-close" class="secondary" type="button">Close</button>
+  </div>
+  <div class="alert-body">
+    <a class="call" href="tel:988">Call or text 988<small>Suicide &amp; Crisis Lifeline, 24/7</small></a>
+    <a class="call" href="tel:18338526262">Call or text 1-833-852-6262<small>National Maternal Mental Health Hotline, 24/7</small></a>
+    <a class="call" href="tel:18007997233">Call 1-800-799-7233<small>National Domestic Violence Hotline. You can also text START to 88788.</small></a>
+    <h3>Urgent warning signs</h3>
+    <p class="muted">If you have any of these, get medical care right away. Tell them you gave birth in the last year.</p>
+    <ul id="help-signs"></ul>
+    <p class="fine">Sources: CDC Hear Her; AWHONN POST-BIRTH (seizures, incisions). US numbers only.</p>
+  </div>
 </dialog>
 
 <script src="/static/app.js"></script>

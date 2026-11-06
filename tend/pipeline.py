@@ -12,7 +12,7 @@ import re
 from datetime import date
 
 from .claude_check import check_entry
-from .notices import merge_notices, word_notices
+from .notices import about_baby, merge_notices, word_notices
 from .signs import (
     ALWAYS_911,
     ALWAYS_CARE_NOW,
@@ -81,7 +81,11 @@ def merge_flags(text: str, hits: dict[str, dict], claude_signs: list[dict], ai_o
     """Combine both checks. Anything either one found stays flagged."""
     merged: dict[str, dict] = {}
     for sid, hit in hits.items():
-        level = hit["level"] if ai_ok else _raise_to(hit["level"], CARE_NOW)
+        if sid not in ALWAYS_911 and about_baby(hit["quote"]):
+            # The baby's symptom gets the baby notice, not the mother's alert. It stays on record.
+            level = NOTED
+        else:
+            level = hit["level"] if ai_ok else _raise_to(hit["level"], CARE_NOW)
         merged[sid] = {"sign_id": sid, "quote": hit["quote"] or text, "level": level, "source": "words"}
 
     listed_by_claude = {sign.get("id") for sign in claude_signs}
@@ -131,7 +135,8 @@ def clean_claude_patterns(raw: list[dict], entries: list[dict]) -> list[dict]:
             continue
         cleaned.append(
             {
-                "title": safe_title(pattern.get("title", "")),
+                # Code counts the days, so the title can't overstate what she wrote.
+                "title": re.sub(r"\b\d+ days?\b", f"{len(days)} days", safe_title(pattern.get("title", ""))),
                 "sign_ids": [s for s in pattern.get("sign_ids", []) if s in SIGN_NAMES],
                 "evidence": evidence,
             }
@@ -182,7 +187,9 @@ def analyze(current: dict, history: list[dict], birth_date: str | None, llm=chec
     patterns = clean_claude_patterns(claude_patterns, all_entries)
     covered = {sid for p in patterns for sid in p["sign_ids"]}
     patterns += repeated_sign_patterns(all_entries, covered)
-    notices = merge_notices(word_notices(current["text"]), claude_notices)
+    # A notice from Claude counts only if its quote really comes from this entry.
+    verified = [n.get("type") for n in claude_notices if quote_is_hers(n.get("quote", ""), current["text"])]
+    notices = merge_notices(word_notices(current["text"]), verified)
     return {"flags": flags, "patterns": patterns, "notices": notices, "ai_status": ai_status}
 
 

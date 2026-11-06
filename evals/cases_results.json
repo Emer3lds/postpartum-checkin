@@ -21,9 +21,7 @@
   "signs": [
    "harm_thoughts"
   ],
-  "notices": [
-   "baby_health"
-  ],
+  "notices": [],
   "ai_status": "ok",
   "passed": true
  },
@@ -542,7 +540,7 @@
  {
   "kind": "ordinary",
   "text": "My arms are sore from rocking her all night.",
-  "level": null,
+  "level": "check_this",
   "signs": [
    "limb"
   ],

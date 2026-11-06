@@ -27,7 +27,7 @@
     {
      "sign_id": "headache",
      "quote": "Little headache again after lunch.",
-     "level": "care_now",
+     "level": "check_this",
      "source": "both"
     },
     {
@@ -39,14 +39,14 @@
    ],
    "patterns": [
     {
-     "title": "Headaches mentioned on 2 days",
+     "title": "Little headache mentioned on 2 days",
      "sign_ids": [
       "headache"
      ],
      "evidence": [
       {
        "entry_id": 1,
-       "quote": "Little headache this afternoon"
+       "quote": "Little headache this afternoon, probably just no sleep."
       },
       {
        "entry_id": 2,
@@ -66,8 +66,8 @@
    "flags": [
     {
      "sign_id": "headache",
-     "quote": "Another headache, so I drank some water",
-     "level": "care_now",
+     "quote": "Another headache, so I drank some water.",
+     "level": "check_this",
      "source": "both"
     }
    ],
@@ -84,11 +84,11 @@
       },
       {
        "entry_id": 2,
-       "quote": "Little headache again after lunch"
+       "quote": "Little headache again after lunch."
       },
       {
        "entry_id": 3,
-       "quote": "Another headache, so I drank some water"
+       "quote": "Another headache, so I drank some water."
       }
      ]
     },

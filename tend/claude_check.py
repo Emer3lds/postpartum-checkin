@@ -47,7 +47,7 @@ Your job:
    Do not list a sign for everyday new-parent experiences that include none of the details above, such as tiredness from night feeds, sore or full breasts, bleeding that is getting lighter, or briefly feeling teary, lonely, or sad. The app saves these entries, and they can still appear in a pattern if they repeat or get worse. If she also describes something concerning, list that. Judge each entry by itself; a repeat of a small symptom belongs in "patterns" unless she describes the details above.
 2. "patterns": look across all entries, including the current one, for something that repeats or gets worse across different days, even if each mention seems small. Each pattern needs at least two entries and must include the current entry or a recent one. Each pattern covers one topic only. Give a short plain title that uses her own words for the topic and says how many days it appears, such as "Headaches mentioned on 3 days". In "evidence" give each entry's id and an exact quote from it. In "sign_ids" list any related signs, or leave it empty.
 
-3. "notices": list needs outside her own warning signs, each only when it applies.
+3. "notices": list needs outside her own warning signs, only when the CURRENT entry itself describes them. Never list a notice because of an earlier entry. In "quote", copy the exact words from the current entry, character for character.
    - "baby_health": she describes a health worry about her baby, such as a fever, trouble breathing, not feeding, few wet diapers, or being hard to wake. Do not treat the baby's symptom as hers. Routine updates about feeding, sleep, or checkups do not count.
    - "home_safety": someone hurts, threatens, controls, isolates, or frightens her, such as blocking her from leaving, checking her phone, or making her afraid at home. Ordinary disagreements do not count.
 
@@ -64,7 +64,18 @@ OUTPUT_SCHEMA = {
     "additionalProperties": False,
     "required": ["signs", "patterns", "notices"],
     "properties": {
-        "notices": {"type": "array", "items": {"type": "string", "enum": NOTICE_TYPES}},
+        "notices": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["type", "quote"],
+                "properties": {
+                    "type": {"type": "string", "enum": NOTICE_TYPES},
+                    "quote": {"type": "string"},
+                },
+            },
+        },
         "signs": {
             "type": "array",
             "items": {

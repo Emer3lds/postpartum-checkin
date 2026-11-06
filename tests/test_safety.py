@@ -214,6 +214,13 @@ def test_pattern_requires_two_real_entries_and_real_quotes():
     assert cleaned[0]["evidence"][1]["quote"] == "Headache again."
 
 
+def test_pattern_title_uses_the_real_day_count():
+    entries = [_entry("Headache.", 1, "2026-11-04"), _entry("Headache.", 2, "2026-11-05"), _entry("Headache.", 3, "2026-11-05")]
+    raw = [{"title": "Headaches mentioned on 3 days", "sign_ids": [], "evidence": [
+        {"entry_id": i, "quote": "Headache."} for i in (1, 2, 3)]}]
+    assert pipeline.clean_claude_patterns(raw, entries)[0]["title"] == "Headaches mentioned on 2 days"
+
+
 def test_same_day_entries_are_not_a_pattern():
     entries = [_entry("Headache today.", 1), _entry("Headache again.", 2)]
     raw = [{"title": "Headaches", "sign_ids": [], "evidence": [
@@ -255,8 +262,20 @@ def test_word_check_raises_notices_when_claude_fails(text, kind):
 
 
 def test_ordinary_entries_raise_no_notice_and_unknown_claude_notices_are_ignored():
-    llm = lambda *_: {"signs": [], "patterns": [], "notices": ["made_up"]}
-    assert pipeline.analyze(_entry("My partner took the baby for a walk."), [], None, llm=llm)["notices"] == []
+    text = "My partner took the baby for a walk."
+    llm = lambda *_: {"signs": [], "patterns": [], "notices": [{"type": "made_up", "quote": text}]}
+    assert pipeline.analyze(_entry(text), [], None, llm=llm)["notices"] == []
+
+
+def test_notice_from_an_earlier_entry_does_not_attach_to_the_current_one():
+    llm = lambda *_: {"signs": [], "patterns": [], "notices": [{"type": "baby_health", "quote": "The baby has a fever of 101."}]}
+    assert pipeline.analyze(_entry("Had a nice walk."), [], None, llm=llm)["notices"] == []
+
+
+def test_notice_from_claude_with_a_quote_from_this_entry_is_kept():
+    text = "He checks my phone every night."
+    llm = lambda *_: {"signs": [], "patterns": [], "notices": [{"type": "home_safety", "quote": "He checks my phone"}]}
+    assert pipeline.analyze(_entry(text), [], None, llm=llm)["notices"] == ["home_safety"]
 
 
 def test_notice_reaches_the_app_with_fixed_wording(client):
@@ -264,6 +283,31 @@ def test_notice_reaches_the_app_with_fixed_wording(client):
     notices = client.post("/api/checkin", json={"text": "The baby has a fever of 101."}).json()["entry"]["notices"]
     assert notices[0]["type"] == "baby_health"
     assert "This app can't check your baby's health" in notices[0]["body"]
+
+
+@pytest.mark.parametrize("llm", [_failing_llm, _no_findings])
+def test_baby_fever_does_not_start_the_mothers_alert(llm):
+    result = pipeline.analyze(_entry("My baby has a fever of 101 degrees."), [], None, llm=llm)
+    assert highest_level(result["flags"]) is None
+    assert result["notices"] == ["baby_health"]
+
+
+def test_claude_can_still_flag_the_mother_when_both_have_symptoms():
+    text = "My baby has a fever. I have a fever of 102 degrees too."
+    llm = lambda *_: {"signs": [{"id": "fever", "quote": "I have a fever of 102 degrees too.", "strength": "clear"}], "patterns": []}
+    result = pipeline.analyze(_entry(text), [], None, llm=llm)
+    assert highest_level(result["flags"]) == CARE_NOW
+    assert result["notices"] == ["baby_health"]
+
+
+def test_baby_breathing_trouble_keeps_the_911_alert():
+    result = pipeline.analyze(_entry("My baby is having trouble breathing."), [], None, llm=_no_findings)
+    assert highest_level(result["flags"]) == CALL_911
+
+
+def test_mothers_own_fever_still_alerts_when_claude_fails():
+    result = pipeline.analyze(_entry("I have a fever."), [], None, llm=_failing_llm)
+    assert highest_level(result["flags"]) == CARE_NOW
 
 
 def test_no_flags_means_no_script():

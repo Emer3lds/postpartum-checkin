@@ -1,35 +1,127 @@
+/* ==========================================================================
+   Tend: calm, blurred, thumb-first.
+   Purple, pink and orange for everything ordinary. Red is reserved for help
+   and alarms: nothing else in the app may use it.
+   ========================================================================== */
+
 :root {
-  --bg: #f4efe8;
-  --surface: #fffdf9;
-  --ink: #2c2622;
-  --muted: #6e645b;
-  --line: #e2d9ce;
-  --brand: #2f6b5e;
-  --brand-ink: #ffffff;
-  --danger: #b3261e;
-  --danger-bg: #fdecea;
-  --check: #8a5a00;
-  --check-bg: #fdf3dc;
-  --radius: 16px;
+  --ink: #33203d;
+  --soft: #4c3857;
+  --accent: #63388c;
+  --glass: rgb(255 255 255 / 0.5);
+  --panel: rgb(255 253 254 / 0.72);
+  --field: rgb(255 255 255 / 0.68);
+  --edge: rgb(255 255 255 / 0.75);
+  --outline: rgb(99 56 140 / 0.42);
+  --rule: rgb(90 60 90 / 0.2);
+  --bar: rgb(255 248 252 / 0.72);
+  --shadow: rgb(96 56 120 / 0.16);
+  --btn: linear-gradient(135deg, #6f43a0, #96468c);
+  --btn-ink: #ffffff;
+  --wash: linear-gradient(172deg, #fce7e3 0%, #f9dfe8 34%, #eddff5 68%, #efe7f8 100%);
+  --flower: 1;
+  --backdrop: #efe3f2;
+
+  --peach: rgb(255 247 240 / 0.84);
+  --peach-pill: #fbe0c8;
+  --peach-pill-ink: #6f3710;
+  --notice: rgb(247 240 253 / 0.88);
+  --notice-edge: rgb(150 110 190 / 0.35);
+  --thread: #d9762b;
+  --thread-line: rgb(217 118 43 / 0.4);
+  --loop: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Ccircle cx='19' cy='19' r='19' fill='%23fbd3b4'/%3E%3Cg fill='none' stroke='%23a4501c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M26 17a7.2 7.2 0 0 0-12.6-3.2L11 16.2M12 21a7.2 7.2 0 0 0 12.6 3.2l2.4-2.4'/%3E%3Cpath d='M11 11.5v4.7h4.7M27 26.5v-4.7h-4.7'/%3E%3C/g%3E%3C/svg%3E");
+
+  --red: #b3261e;
+  --red-text: #a3211a;
+  --red-fill: #fff4f2;
+  --red-edge: #b3261e;
+
+  --sheet: #fff8f6;
+  --sheet-pin: rgb(255 248 246 / 0.88);
+  --sheet-line: #ecd9d8;
+  --sheet-field: #ffffff;
+  --words: #f4ecf8;
+  --scrim: rgb(52 12 26 / 0.46);
+
   font-family: ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
   color: var(--ink);
+}
+
+/* Night: dim, so opening the app at 3am isn't a flash of light. */
+html[data-night] {
+  --ink: #f5ecf5;
+  --soft: #e3d8e6;
+  --accent: #dcc3f2;
+  --glass: rgb(24 14 32 / 0.38);
+  --panel: rgb(44 30 42 / 0.82);
+  --field: rgb(18 10 26 / 0.45);
+  --edge: rgb(255 255 255 / 0.15);
+  --outline: rgb(220 195 242 / 0.4);
+  --rule: rgb(255 255 255 / 0.16);
+  --bar: rgb(30 20 40 / 0.76);
+  --shadow: rgb(0 0 0 / 0.3);
+  --btn: linear-gradient(135deg, #cdb0e8, #e2b6d4);
+  --btn-ink: #24142f;
+  --wash: linear-gradient(172deg, #2b1b36 0%, #1d1329 58%, #150e1e 100%);
+  --flower: 0.3;
+  --backdrop: #150e1e;
+
+  /* Orange glares on the dark background, so at night these turn lilac-pink. */
+  --peach: rgb(44 30 42 / 0.82);
+  --peach-pill: rgb(226 182 212 / 0.2);
+  --peach-pill-ink: #f0d3e6;
+  --notice: rgb(44 30 56 / 0.86);
+  --notice-edge: rgb(220 195 242 / 0.35);
+  --thread: #e2b6d4;
+  --thread-line: rgb(226 182 212 / 0.4);
+  --loop: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Ccircle cx='19' cy='19' r='19' fill='%23e2c6ea'/%3E%3Cg fill='none' stroke='%234a2a63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M26 17a7.2 7.2 0 0 0-12.6-3.2L11 16.2M12 21a7.2 7.2 0 0 0 12.6 3.2l2.4-2.4'/%3E%3Cpath d='M11 11.5v4.7h4.7M27 26.5v-4.7h-4.7'/%3E%3C/g%3E%3C/svg%3E");
+
+  --red-text: #ffb8b0;
+  --red-fill: #2b171d;
+  --red-edge: #e0574d;
+
+  --sheet: #21151f;
+  --sheet-pin: rgb(33 21 31 / 0.88);
+  --sheet-line: #47323f;
+  --sheet-field: #2c1e2a;
+  --words: #30223a;
+  --scrim: rgb(12 5 10 / 0.62);
+
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
-body { margin: 0; background: var(--bg); line-height: 1.45; }
+body { margin: 0; line-height: 1.45; background: var(--backdrop); }
+
+/* ---------- The page: a wash and a flower that stay put on scroll ---------- */
 
 .phone {
   position: relative;
+  isolation: isolate;
   max-width: 430px;
   min-height: 100vh;
   margin: 0 auto;
-  padding-bottom: 76px;
-  background: var(--surface);
-  box-shadow: 0 0 40px rgb(60 45 30 / 0.12);
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  background: var(--wash);
+}
+.phone::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  width: min(100%, 430px);
+  height: 100vh;
+  height: 100lvh;
+  background: url("bloom.svg") top center / cover no-repeat;
+  opacity: var(--flower);
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
+/* Header: text scrolling underneath melts away. */
 .top {
   position: sticky;
   top: 0;
@@ -37,89 +129,338 @@ body { margin: 0; background: var(--bg); line-height: 1.45; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
+  padding: calc(12px + env(safe-area-inset-top)) 18px 12px;
 }
-.brand { font-size: 1.25rem; font-weight: 700; color: var(--brand); }
+/* The blur fades out downward, so the header has no visible bottom edge. */
+.top::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -24px;
+  z-index: -1;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent);
+  pointer-events: none;
+}
+.brand { font-size: 1.4rem; font-weight: 500; letter-spacing: -0.01em; }
 
-.screen { padding: 20px 16px; }
-h1 { margin: 0 0 8px; font-size: 1.5rem; line-height: 1.2; }
+/* Saturated red, so it is found without looking for it. */
+.help-btn {
+  min-height: 46px;
+  padding: 8px 18px;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--red);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgb(120 20 20 / 0.28);
+}
+
+/* ---------- Words: large and light, with room around them ---------- */
+
+.screen { padding: 12px 18px 8px; }
+/* The space on top lets the flower show and drops the controls toward the thumb. */
+#auth, #setup, #today { padding-top: clamp(8px, 9vh, 92px); }
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 11vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
 h2 { margin: 0 0 8px; font-size: 1.3rem; line-height: 1.2; }
-h3 { margin: 18px 0 6px; font-size: 1rem; }
+h3 { margin: 22px 0 8px; font-size: 1.0625rem; font-weight: 600; }
 p { margin: 0 0 10px; }
-.muted { color: var(--muted); }
-.fine { margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
-.error { color: var(--danger); font-weight: 600; }
 
-.stack { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
-.row { display: flex; gap: 10px; align-items: center; }
-.between { justify-content: space-between; align-items: flex-start; }
+.muted { font-size: 1.0625rem; color: var(--soft); }
+.screen > .muted { max-width: 32ch; margin-bottom: 20px; }
+.fine { margin-top: 14px; font-size: 0.875rem; color: var(--soft); }
+.error { font-weight: 600; color: var(--red-text); }
+.date { margin-bottom: 4px; font-size: 0.9375rem; font-weight: 600; color: var(--soft); }
+
+.quote {
+  margin: 6px 0 12px;
+  padding-left: 12px;
+  border-left: 3px solid var(--rule);
+}
+
+#greeting .week {
+  display: table;
+  margin-bottom: 14px;
+  padding: 6px 13px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+/* ---------- Layout helpers ---------- */
+
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; gap: 8px; align-items: center; }
+.between { justify-content: space-between; align-items: flex-start; gap: 12px; }
 .grow { flex: 1; }
-.wide { width: 100%; margin-top: 14px; }
+.wide { width: 100%; margin-top: 10px; }
 
-label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
+/* ---------- Forms: a pane of frosted glass holding what there is to do ---------- */
+
+#auth-form, #setup-form, #checkin-form {
+  padding: 12px;
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  border-radius: 30px;
+  box-shadow: 0 14px 40px var(--shadow);
+  -webkit-backdrop-filter: blur(26px) saturate(1.2);
+  backdrop-filter: blur(26px) saturate(1.2);
+}
+#auth-form, #setup-form { padding: 16px 14px 14px; }
+
+label { display: flex; flex-direction: column; gap: 6px; padding: 0 4px; font-weight: 600; }
+
+/* 16px or more also stops iOS zooming in when a field is tapped. */
 input, textarea {
   width: 100%;
-  padding: 12px;
   font: inherit;
-  color: inherit;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--ink);
+  caret-color: var(--accent);
+  background: var(--field);
+  border: 1px solid var(--outline);
+  border-radius: 18px;
 }
-input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
-  outline: 3px solid var(--brand);
+input { min-height: 56px; padding: 12px 16px; }
+
+#entry {
+  display: block;
+  min-height: 152px;
+  padding: 16px 18px;
+  line-height: 1.5;
+  resize: none;
+  border: 0;
+  border-radius: 20px;
+}
+#entry::placeholder { color: var(--soft); opacity: 0.88; }
+
+form .fine, form .error { margin: 0 8px 4px; }
+
+:is(input, textarea, button, a):focus-visible {
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
+/* ---------- Buttons ---------- */
+
 button { font: inherit; cursor: pointer; }
-button:disabled { opacity: 0.6; cursor: progress; }
+button:disabled { cursor: progress; }
+
 .primary, .secondary {
-  min-height: 48px;
-  padding: 10px 16px;
+  min-height: 60px;
+  padding: 10px 20px;
+  font-size: 1.0625rem;
   font-weight: 600;
-  border-radius: 12px;
-}
-.primary { color: var(--brand-ink); background: var(--brand); border: 0; }
-.secondary { color: var(--brand); background: transparent; border: 1.5px solid var(--brand); }
-#mic[aria-pressed="true"] { color: #fff; background: var(--danger); border-color: var(--danger); }
-.link { padding: 8px; color: var(--brand); text-decoration: underline; background: none; border: 0; }
-.help-btn {
-  min-height: 40px;
-  padding: 6px 12px;
-  font-weight: 700;
-  color: var(--danger);
-  background: var(--danger-bg);
-  border: 0;
   border-radius: 999px;
 }
+.primary {
+  color: var(--btn-ink);
+  background: var(--btn);
+  border: 0;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+.primary:disabled { opacity: 0.8; }
+.secondary {
+  color: var(--accent);
+  background: var(--field);
+  border: 1px solid var(--outline);
+}
+.link {
+  min-height: 48px;
+  padding: 8px;
+  color: var(--accent);
+  text-decoration: underline;
+  background: none;
+  border: 0;
+}
+
+#mic {
+  display: inline-flex;
+  flex: none;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  min-width: 124px;
+}
+/* The icon lives in CSS because app.js replaces this button's text. */
+#mic::before {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 22px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='3' width='6' height='11' rx='3' fill='%23000'/%3E%3Cpath d='M5 11a7 7 0 0 0 14 0M12 18v3'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='3' width='6' height='11' rx='3' fill='%23000'/%3E%3Cpath d='M5 11a7 7 0 0 0 14 0M12 18v3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* Listening is a calm state, not an alarm, so it is plum rather than red. */
+#mic[aria-pressed="true"] {
+  color: var(--btn-ink);
+  background: var(--btn);
+  border-color: transparent;
+}
+#mic[aria-pressed="true"]::before {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='6' width='12' height='12' rx='3'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='6' width='12' height='12' rx='3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  #mic[aria-pressed="true"] { animation: listening 2.6s ease-in-out infinite; }
+  @keyframes listening {
+    50% { box-shadow: 0 0 0 9px rgb(120 80 170 / 0.22); }
+  }
+}
+
+/* Small phones: keep the controls above the tab bar without scrolling. */
+@media (max-height: 700px) {
+  #auth, #setup, #today { padding-top: 6px; }
+  #entry { height: 108px; min-height: 108px; padding: 12px 16px; }
+  #greeting .week { margin-bottom: 8px; }
+  .screen > .muted { margin-bottom: 12px; font-size: 1rem; }
+}
+@media (max-width: 350px) {
+  #mic { min-width: 104px; }
+  #checkin-form .primary, #checkin-form .secondary { padding: 10px 12px; font-size: 1rem; }
+}
+
+/* ---------- Cards ---------- */
+
+#result { scroll-margin: 88px 0 104px; }
 
 .card {
-  margin-top: 14px;
-  padding: 14px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  margin-top: 16px;
+  padding: 18px;
+  font-size: 1.0625rem;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: 26px;
+  box-shadow: 0 10px 30px var(--shadow);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
 }
-.card.check { background: var(--check-bg); border-color: #edd9a8; }
-.card.urgent { background: var(--danger-bg); border-color: #f2c1bc; }
-.card h3 { margin-top: 0; }
-.quote { margin: 6px 0; padding-left: 10px; font-style: italic; border-left: 3px solid var(--line); }
-.answers { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.answers button { min-height: 44px; flex: 1; }
+.card h3 { margin: 0 0 10px; font-size: 1.1875rem; line-height: 1.3; }
+.card p:last-child { margin-bottom: 0; }
+
+/* Worth attention, but not an alarm: warm peach, and never red. */
+.card.check { background: var(--peach); }
+.card.check .quote { border-left-color: var(--thread); }
+
+/* Follow-up answers: three big, equal targets. */
+.answers { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
+.answers button { flex: 1; min-height: 56px; padding: 8px 10px; }
+
+.card.urgent {
+  color: #2e1c28;
+  background: var(--red-fill);
+  border: 2px solid var(--red-edge);
+}
+html[data-night] .card.urgent { color: #f8eef2; }
+.card.urgent h3 { color: var(--red-text); }
+#reopen-alert {
+  margin-top: 6px;
+  color: #ffffff;
+  background: var(--red);
+  box-shadow: none;
+}
+
+/* Support notices (baby health, safety at home): steady lilac, never an alarm.
+   Someone reading about safety at home may not want a loud screen. Only the
+   Call 911 button carries red, and only as an outline. */
+.card.notice { background: var(--notice); border-color: var(--notice-edge); }
+.card.notice::before {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Ccircle cx='19' cy='19' r='19' fill='%23e2c6ea'/%3E%3Cpath d='M19 27.5s-8.5-5-8.5-11a4.8 4.8 0 0 1 8.5-3 4.8 4.8 0 0 1 8.5 3c0 6-8.5 11-8.5 11z' fill='none' stroke='%234a2a63' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.card.notice .call { margin-top: 10px; color: var(--accent); }
+.card.notice .call[href="tel:911"] { color: var(--red-text); }
 
 .pill {
   display: inline-block;
-  padding: 2px 8px;
-  font-size: 0.75rem;
+  margin-right: 4px;
+  padding: 3px 10px;
+  font-size: 0.8125rem;
   font-weight: 700;
   border-radius: 999px;
 }
-.pill.check_this { color: var(--check); background: var(--check-bg); }
-.pill.care_now, .pill.call_911 { color: var(--danger); background: var(--danger-bg); }
+.pill.check_this { color: var(--peach-pill-ink); background: var(--peach-pill); }
+.pill.care_now, .pill.call_911 { color: #ffffff; background: var(--red); }
 
-.date { font-size: 0.8rem; color: var(--muted); }
+/* ---------- Pattern card: her own words, dated, on a thread ---------- */
+
+.pattern-days { margin: 0; padding: 0; list-style: none; }
+
+/* A small returning loop, marking this as something that repeats. */
+.pattern::before {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 12px;
+  background: var(--loop) center / contain no-repeat;
+}
+.pattern h3 { margin-bottom: 14px; }
+.pattern-days li { position: relative; padding: 0 0 14px 24px; }
+.pattern-days li::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  background: var(--thread);
+  border-radius: 50%;
+}
+.pattern-days li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: -1px;
+  left: 4.5px;
+  width: 2px;
+  background: var(--thread-line);
+  border-radius: 2px;
+}
+.pattern .date { margin: 0 0 2px; }
+.pattern .quote { margin: 0; padding: 0; border: 0; }
+.pattern-next { margin: 0; padding-top: 14px; font-weight: 500; border-top: 1px solid var(--rule); }
+
+/* ---------- Clinician summary: one calm reading surface ---------- */
+
+#print { flex: none; min-height: 52px; }
+
+#summary-body {
+  padding: 18px 16px;
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: 26px;
+  box-shadow: 0 10px 30px var(--shadow);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+#summary-body .card { box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+th, td { padding: 10px 6px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+th { font-size: 0.875rem; color: var(--soft); }
+
+/* ---------- Frosted tab bar, tall enough for a thumb ---------- */
 
 .tabs {
   position: fixed;
@@ -128,63 +469,232 @@ button:disabled { opacity: 0.6; cursor: progress; }
   z-index: 3;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
   width: min(100%, 430px);
-  background: var(--surface);
-  border-top: 1px solid var(--line);
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+  background: var(--bar);
+  border-top: 1px solid var(--edge);
+  border-radius: 24px 24px 0 0;
   transform: translateX(-50%);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
 }
 .tab {
-  min-height: 60px;
+  min-height: 52px;
   padding: 8px 2px;
-  font-size: 0.85rem;
-  color: var(--muted);
+  font-size: 0.9375rem;
+  color: var(--soft);
   background: none;
   border: 0;
+  border-radius: 16px;
 }
-.tab.active { font-weight: 700; color: var(--brand); box-shadow: inset 0 3px 0 var(--brand); }
+.tab.active { font-weight: 700; color: var(--accent); background: var(--field); }
+
+/* ==========================================================================
+   Sheets (alert and help): the one loud moment in the app. Solid red headline
+   over the blurred screen, rising from the bottom so it is in thumb reach, with
+   Call 911 pinned on screen however far she scrolls. In the page order Call 911
+   still comes straight after the headline, for keyboards and screen readers.
+   ========================================================================== */
 
 .sheet {
-  width: min(100% - 16px, 414px);
-  max-height: calc(100vh - 16px);
-  padding: 20px 16px;
-  color: inherit;
-  background: var(--surface);
+  width: min(100%, 430px);
+  max-width: 100%;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto auto 0;
+  padding: 0;
+  overscroll-behavior: contain;
+  color: var(--ink);
+  background: var(--sheet);
   border: 0;
-  border-radius: var(--radius);
+  border-radius: 28px 28px 0 0;
 }
-.sheet::backdrop { background: rgb(40 25 20 / 0.55); }
-.sheet.urgent { border-top: 8px solid var(--danger); }
-.sheet ul { padding-left: 20px; margin: 6px 0; }
+.sheet[open] { display: flex; flex-direction: column; overflow-y: auto; }
+.sheet > * { flex: none; }
+.sheet::backdrop {
+  background: var(--scrim);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet[open] { animation: sheet-rise 0.2s ease-out; }
+  @keyframes sheet-rise { from { transform: translateY(24px); } }
+}
+
+.alert-hero { order: 0; padding: 22px 20px 20px; color: #ffffff; background: var(--red); }
+/* A shape as well as a color, so the warning doesn't rely on seeing red. */
+.alert-hero::before {
+  content: "!";
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--red);
+  background: #ffffff;
+  border-radius: 50%;
+}
+.alert-hero h2 { margin-bottom: 10px; font-size: 2rem; font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; }
+.alert-hero p { font-size: 1.0625rem; }
+.alert-hero p:last-child { margin-bottom: 0; }
+
+.alert-call {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  order: 2;
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: var(--sheet-pin);
+  border-top: 1px solid var(--sheet-line);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
 
 .call {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 52px;
-  margin-top: 8px;
-  padding: 8px 14px;
+  min-height: 64px;
+  padding: 10px 20px;
+  font-size: 1.125rem;
   font-weight: 700;
-  color: var(--brand);
+  line-height: 1.3;
+  color: var(--red-text);
   text-decoration: none;
-  border: 1.5px solid var(--brand);
-  border-radius: 12px;
+  border: 2px solid currentColor;
+  border-radius: 22px;
 }
-.call small { font-weight: 400; color: var(--muted); }
-.call.danger { color: #fff; background: var(--danger); border-color: var(--danger); }
+.call + .call { margin-top: 10px; }
+.call small { font-size: 0.9375rem; font-weight: 400; color: var(--soft); }
+.call.danger {
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  min-height: 68px;
+  font-size: 1.375rem;
+  color: #ffffff;
+  background: var(--red);
+  border-color: var(--red);
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgb(140 24 20 / 0.32);
+}
+.call.danger::before {
+  content: "";
+  flex: none;
+  width: 26px;
+  height: 26px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 
+/* Close sits left of Call 911, away from the thumb's natural landing spot on the
+   big red button. Call 911 still comes first for keyboards and screen readers. */
+.alert-call .call { flex: 1; min-width: 0; padding-inline: 12px; }
+.alert-call .secondary { flex: none; order: -1; min-height: 68px; padding-inline: 18px; }
+
+.alert-body { order: 1; padding: 18px 16px 20px; font-size: 1.0625rem; }
+.alert-body h3 { color: var(--soft); }
+.alert-body > h3:first-child { margin-top: 0; }
+.alert-body .quote { border-left-color: var(--sheet-line); }
+.alert-body ul { margin: 8px 0; padding-left: 22px; }
+.alert-body li { margin-bottom: 6px; }
+/* Her words to say aloud: the calm part of the sheet, so lilac and not red. */
 .script {
-  padding: 12px;
+  padding: 16px;
+  line-height: 1.5;
   white-space: pre-wrap;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  background: var(--words);
+  border-radius: 20px;
+}
+.sheet .secondary {
+  min-height: 56px;
+  background: var(--sheet-field);
+  border: 1.5px solid var(--sheet-line);
 }
 
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { padding: 8px 6px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+/* ---------- Welcome: a quiet moment after creating an account ---------- */
+
+#welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+  text-align: center;
+  cursor: pointer;
+}
+#welcome > .muted { max-width: none; margin-bottom: 0; font-size: 1.1875rem; }
+
+/* ---------- Moving between screens: everything fades, the flower stays ----------
+   The fade goes on each piece rather than the whole screen, because fading a
+   parent stops the frosted glass inside it from blurring until the fade ends. */
+
+@media (prefers-reduced-motion: no-preference) {
+  .screen > :where(:not(#result, #patterns-today, #patterns-history, #history-list)),
+  :where(#result, #patterns-today, #patterns-history, #history-list) > * {
+    animation: screen-in 0.42s ease-out backwards;
+  }
+  .screen > :nth-child(2) { animation-delay: 0.06s; }
+  .screen > :nth-child(n + 3) { animation-delay: 0.12s; }
+  @keyframes screen-in {
+    from { opacity: 0; transform: translateY(8px); }
+  }
+
+  #welcome > * { animation-duration: 0.9s; }
+  #welcome > :nth-child(2) { animation-delay: 0.35s; }
+
+  .leaving > :where(:not(#result, #patterns-today, #patterns-history, #history-list)),
+  .leaving > :where(#result, #patterns-today, #patterns-history, #history-list) > *,
+  .tabs.leaving {
+    opacity: 0;
+    transition: opacity 0.18s ease-in;
+    pointer-events: none;
+  }
+  #welcome.leaving > * { transition-duration: 0.45s; }
+
+  .tabs { animation: tabs-in 0.42s ease-out backwards; }
+  @keyframes tabs-in { from { opacity: 0; } }
+
+  /* Sheets open at once and fade away gently, in browsers that support it. */
+  .sheet, .sheet::backdrop {
+    transition: opacity 0.2s, transform 0.2s, overlay 0.2s allow-discrete, display 0.2s allow-discrete;
+  }
+  .sheet:not([open]) { opacity: 0; transform: translateY(24px); }
+  .sheet:not([open])::backdrop { opacity: 0; }
+}
+
+/* ---------- Print: plain ink on paper, whatever the hour ---------- */
 
 @media print {
-  body { background: #fff; }
-  .phone { max-width: none; box-shadow: none; padding: 0; }
+  html, html[data-night] {
+    --ink: #000000;
+    --soft: #333333;
+    --rule: #bbbbbb;
+    --panel: transparent;
+    --peach: transparent;
+    --edge: #bbbbbb;
+    --shadow: transparent;
+    --red-text: #000000;
+    color-scheme: light;
+  }
+  body { background: #ffffff; }
+  .phone { max-width: none; min-height: 0; padding: 0; background: none; }
+  .phone::before, .pattern::before { display: none; }
   .top, .no-print { display: none !important; }
+  .screen { padding: 0; }
+  .card, #summary-body {
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  #summary-body { padding: 0; border: 0; border-radius: 0; }
+  .card { padding: 10px; border-radius: 8px; break-inside: avoid; }
+  tr { break-inside: avoid; }
 }
